@@ -1,0 +1,57 @@
+{
+  "itemName" : "pat_batman",
+  "level" : 6,
+  "price" : 69420,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "batman is short for battery manipulator",
+  "shortdescription" : "batman",
+  "tooltipKind" : "base",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "icon.png",
+  "animation" : "magnorbs.animation",
+  "animationParts" : {
+    "glove" : "",
+    "orb1" : "orb1.png",
+    "orb2" : "orb1.png",
+    "orb3" : "orb3.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["magnorbs.lua"],
+
+  "orbitRate" : 0.6,
+
+  "projectileType" : "batterymanipulator1",
+  "projectileParameters" : {
+    "power" : 17,
+    "knockback" : 30,
+
+    "returnOnHit" : false,
+    "ignoreTerrain" : false,
+    "controlForce" : 170,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 9.0
+  },
+
+  "shieldKnockback" : 90,
+  "shieldEnergyCost" : 0,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }
+}

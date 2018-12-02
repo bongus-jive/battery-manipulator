@@ -1,0 +1,10 @@
+{
+  "version" : "v1.0",
+  "author" : "patman",
+  "tags" : "Miscellaneous|Weapons",
+  "description" : "batman is short for battery manipulator'\n\ni forgot to make a recipe so just use /spawnitem pat_batman\n\nignore the fact that a regular battery turns into an AA battery i couldnt fix it and i dont care enough to try\n\nenter the pile\nhttps://discord.gg/GdsQSgV",
+  "name" : "batterymanipulator",
+  "friendlyName" : "batman",
+  "steamContentId" : "1580109432",
+  "link" : "steam://url/CommunityFilePage/1580109432"
+}
