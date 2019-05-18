@@ -144,12 +144,17 @@ end
 
 function fire(orbIndex)
   local params = copy(self.projectileParameters)
-  params.powerMultiplier = activeItem.ownerPowerMultiplier()
+  --params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.ownerAimPosition = activeItem.ownerAimPosition()
   local firePos = firePosition(orbIndex)
   if world.lineCollision(mcontroller.position(), firePos) then return end
+	if orbIndex == 3 then
+		projectileType = self.projectileType.."2"
+	else
+		projectileType = self.projectileType
+	end
   local projectileId = world.spawnProjectile(
-      self.projectileType,
+      projectileType,
       firePosition(orbIndex),
       activeItem.ownerEntityId(),
       aimVector(orbIndex),
