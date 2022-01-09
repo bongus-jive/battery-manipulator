@@ -25,11 +25,14 @@
 
   "orbitRate" : 0.6,
 
-  "projectileType" : "batterymanipulator1",
+  "projectiles" : [
+		{"type" : "pat_batterymanipulator1"},
+		{"type" : "pat_batterymanipulator1", "parameters" : {"processing" : "?flipy"}},
+		{"type" : "pat_batterymanipulator2"}
+	],
   "projectileParameters" : {
-    "power" : 17,
+    "power" : 10,
     "knockback" : 30,
-
     "returnOnHit" : false,
     "ignoreTerrain" : false,
     "controlForce" : 170,

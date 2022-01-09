@@ -1,10 +1,8 @@
 {
-  "projectileName" : "batterymanipulator12",
-  "image" : "battery12.png",
-  "animationCycle" : 0.25,
-  "frameNumber" : 4,
+  "projectileName" : "pat_batterymanipulator2",
+  "image" : "battery2.png",
   "pointLight" : false,
-  "flippable" : true,
+  "flippable" : false,
   "orientationLocked" : true,
   "actionOnReap" : [ ],
   "statusEffects" : [ ],
@@ -29,5 +27,6 @@
     }
   ],
 
-  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
+	"rotationSpeed" : -30
 }
