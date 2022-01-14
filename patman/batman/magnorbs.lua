@@ -29,7 +29,7 @@ function init()
   shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
   shieldPoly = animator.partPoly("glove", "shieldPoly")
   shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
-  shieldHealth = 10000
+  shieldHealth = config.getParameter("shieldHealth", 100)
   shieldKnockback = config.getParameter("shieldKnockback", 0)
   if shieldKnockback > 0 then
     knockbackDamageSource = {
@@ -84,7 +84,7 @@ function update(dt, fireMode, shiftHeld)
     if not status.resourcePositive("shieldStamina") or not status.overConsumeResource("energy", shieldEnergyCost * dt) then
       deactivateShield()
     else
-      damageListener:update()
+      listener:update()
     end
   end
 
@@ -188,7 +188,7 @@ function activateShield()
   activeItem.setItemShieldPolys({shieldPoly})
   activeItem.setItemDamageSources({knockbackDamageSource})
   status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = shieldHealth}})
-  damageListener = damageListener("damageTaken", function(notifications)
+  listener = damageListener("damageTaken", function(notifications)
     for _,notification in pairs(notifications) do
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("shieldStamina") then
