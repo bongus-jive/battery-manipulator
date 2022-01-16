@@ -30,7 +30,7 @@
 		{"type" : "pat_batterymanipulator2"}
 	],
   "projectileParameters" : {
-    "power" : 25,
+    "power" : 12,
     "knockback" : 30,
     "returnOnHit" : false,
     "ignoreTerrain" : false,
