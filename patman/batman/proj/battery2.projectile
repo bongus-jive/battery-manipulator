@@ -8,7 +8,7 @@
   "statusEffects" : [ ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 65.0,
-  "speed" : 75,
+  "speed" : 90,
   "damageKind" : "electric",
   "physics" : "laser",
   "bounces" : -1,

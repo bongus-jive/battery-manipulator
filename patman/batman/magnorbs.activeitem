@@ -14,10 +14,9 @@
   "inventoryIcon" : "icon.png",
   "animation" : "magnorbs.animation",
   "animationParts" : {
-    "glove" : "",
-    "orb1" : "orb1.png",
-    "orb2" : "orb1.png",
-    "orb3" : "orb3.png"
+    "orb1" : "battery1.png",
+    "orb2" : "battery1.png",
+    "orb3" : "battery2.png"
   },
   "animationCustom" : { },
 
@@ -31,7 +30,7 @@
 		{"type" : "pat_batterymanipulator2"}
 	],
   "projectileParameters" : {
-    "power" : 24,
+    "power" : 25,
     "knockback" : 30,
     "returnOnHit" : false,
     "ignoreTerrain" : false,
@@ -40,7 +39,7 @@
     "snapDistance" : 9.0
   },
 
-  "shieldKnockback" : 60,
+  "shieldKnockback" : 40,
   "shieldEnergyCost" : 10,
   "shieldHealth" : 800,
 

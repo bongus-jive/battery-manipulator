@@ -45,8 +45,6 @@ function init()
   end
 
   setStance("idle")
-
-  updateHand()
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -59,7 +57,7 @@ function update(dt, fireMode, shiftHeld)
     if not shieldActive then
       activateShield()
     end
-    setOrbAnimationState("shield")
+    setOrbAnimationState("orb")
     shieldTransformTimer = math.min(shieldTransformTime, shieldTransformTimer + dt)
   else
     if shieldTransformTimer > 0 and shieldTransformTimer < dt then
@@ -67,9 +65,6 @@ function update(dt, fireMode, shiftHeld)
     end
 
     shieldTransformTimer = math.max(0, shieldTransformTimer - dt)
-    if shieldTransformTimer > 0 then
-      setOrbAnimationState("unshield")
-    end
   end
 
   if shieldTransformTimer == 0 and fireMode == "primary" and lastFireMode ~= "primary" and cooldownTimer == 0 then
@@ -107,7 +102,6 @@ function update(dt, fireMode, shiftHeld)
   end
 
   updateAim()
-  updateHand()
 end
 
 function uninit()
@@ -131,12 +125,6 @@ function availableOrbCount()
     end
   end
   return available
-end
-
-function updateHand()
-  local isFrontHand = (activeItem.hand() == "primary") == (mcontroller.facingDirection() < 0)
-  animator.setGlobalTag("hand", isFrontHand and "front" or "back")
-  activeItem.setOutsideOfHand(isFrontHand)
 end
 
 function fire(orbIndex)
@@ -173,9 +161,13 @@ end
 
 function checkProjectiles()
   for i, projectileId in ipairs(storage.projectileIds) do
-    if projectileId and not world.entityExists(projectileId) then
-      storage.projectileIds[i] = false
-    end
+    if projectileId then
+			if not world.entityExists(projectileId) then
+				storage.projectileIds[i] = false
+			elseif i == 3 then
+				world.sendEntityMessage(projectileId, "pat_batterymanipulator", activeItem.ownerAimPosition())
+			end
+		end
   end
 end
 
