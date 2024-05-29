@@ -1,21 +1,16 @@
 {
   "projectileName" : "pat_batterymanipulator2",
   "image" : "battery2.png",
-  "pointLight" : false,
   "flippable" : false,
   "orientationLocked" : true,
-  "actionOnReap" : [ ],
-  "statusEffects" : [ ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
-  "power" : 65.0,
-  "speed" : 90,
+  "speed" : 85,
   "damageKind" : "electric",
 	"damageRepeatTimeout" : 0.2,
   "physics" : "laser",
   "bounces" : -1,
   "piercing" : true,
-  "timeToLive" : 6,
-  "lightColor" : [0, 30, 80],
+  "timeToLive" : 10,
 
   "actionOnCollide" : [
     {
@@ -29,5 +24,5 @@
   ],
 
   "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
-	"rotationSpeed" : -30
+	"rotationSpeed" : -25
 }

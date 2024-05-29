@@ -1,21 +1,16 @@
 {
   "projectileName" : "pat_batterymanipulator1",
   "image" : "battery1.png",
-  "pointLight" : false,
   "flippable" : false,
   "orientationLocked" : true,
-  "actionOnReap" : [ ],
-  "statusEffects" : [ ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
-  "power" : 30.0,
-  "speed" : 100,
+  "speed" : 105,
   "damageKind" : "electric",
 	"damageRepeatTimeout" : 0.2,
   "physics" : "laser",
   "bounces" : -1,
   "piercing" : true,
-  "timeToLive" : 6,
-  "lightColor" : [0, 30, 80],
+  "timeToLive" : 10,
 
   "actionOnCollide" : [
     {
