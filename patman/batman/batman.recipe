@@ -1,12 +1,9 @@
 {
-  "input" : [
-    { "item" : "magnorbs", "count" : 1 },
-    { "item" : "battery", "count" : 1 },
-    { "item" : "smallbattery", "count" : 2 }
+  "input": [
+    "magnorbs",
+    "battery",
+    [ "smallbattery", 2 ]
   ],
-  "output" : {
-    "item" : "pat_batman",
-    "count" : 1
-  },
-  "groups" : [ "plain", "all" ]
+  "output": "pat_batman",
+  "groups": [ "craftinganvil3", "weapons", "all" ]
 }
