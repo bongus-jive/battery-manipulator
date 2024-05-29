@@ -161,12 +161,8 @@ end
 
 function checkProjectiles()
   for i, projectileId in ipairs(storage.projectileIds) do
-    if projectileId then
-			if not world.entityExists(projectileId) then
-				storage.projectileIds[i] = false
-			elseif i == 3 then
-				world.sendEntityMessage(projectileId, "pat_batterymanipulator", activeItem.ownerAimPosition())
-			end
+    if projectileId and not world.entityExists(projectileId) then
+      storage.projectileIds[i] = false
 		end
   end
 end
