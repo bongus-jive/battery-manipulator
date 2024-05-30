@@ -29,15 +29,7 @@
 		{"type" : "pat_batterymanipulator1", "parameters" : {"processing" : "?flipy"}},
 		{"type" : "pat_batterymanipulator2"}
 	],
-  "projectileParameters" : {
-    "power" : 12,
-    "knockback" : 30,
-    "returnOnHit" : false,
-    "ignoreTerrain" : false,
-    "controlForce" : 170,
-    "pickupDistance" : 1.5,
-    "snapDistance" : 9.0
-  },
+  "projectileParameters" : {},
 
   "shieldKnockback" : 40,
   "shieldEnergyCost" : 10,

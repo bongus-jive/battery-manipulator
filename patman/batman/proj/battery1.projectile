@@ -5,7 +5,9 @@
   "orientationLocked" : true,
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "speed" : 105,
-  "damageKind" : "electric",
+  "power": 12,
+  "knockback": 12,
+  "damageKind" : "electrichammer",
 	"damageRepeatTimeout" : 0.2,
   "physics" : "laser",
   "bounces" : -1,
@@ -24,5 +26,10 @@
   ],
 
   "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
+
+  "controlForce" : 170,
+  "pickupDistance" : 1,
+  "snapDistance" : 9.0,
+
 	"rotationSpeed" : 45
 }
