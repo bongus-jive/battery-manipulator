@@ -1,0 +1,22 @@
+{
+  "particleEmitters": {
+    "sparks": {
+      "emissionRate": 3,
+      "particles": [
+        { "particle": "electricswoosh1" }
+      ]
+    },
+    "sparks2": {
+      "emissionRate": 5,
+      "particles": [
+        { "particle": "electricswoosh1" }
+      ]
+    },
+    "sparks3": {
+      "emissionRate": 7,
+      "particles": [
+        { "particle": "electricswoosh1" }
+      ]
+    }
+  }
+}

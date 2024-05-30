@@ -25,6 +25,8 @@
     }
   ],
 
+  "statusEffects": [ "pat_batterymanipulator_charge" ],
+
   "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
 
   "controlForce" : 170,

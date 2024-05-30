@@ -25,11 +25,13 @@
     }
   ],
 
-  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua", "messageOnHit.lua" ],
 
   "controlForce" : 150,
   "pickupDistance" : 1,
   "snapDistance" : 9.0,
 
-	"rotationSpeed" : -25
+	"rotationSpeed" : -25,
+  
+  "messageOnHit": "pat_batterymanipulator_trigger"
 }
