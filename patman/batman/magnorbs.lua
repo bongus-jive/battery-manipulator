@@ -129,7 +129,8 @@ end
 
 function fire(orbIndex)
   local firePos = firePosition(orbIndex)
-  if world.lineCollision(mcontroller.position(), firePos) then return end
+  local collision = world.lineCollision(mcontroller.position(), firePos)
+  if collision then firePos = collision end
 	
 	local projectile = projectiles[orbIndex]
   local params = sb.jsonMerge(projectileParameters, projectile.parameters or {})
