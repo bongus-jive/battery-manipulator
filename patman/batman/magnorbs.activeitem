@@ -31,7 +31,7 @@
 	],
   "projectileParameters" : {},
 
-  "shieldKnockback" : 40,
+  "shieldKnockback" : 18,
   "shieldEnergyCost" : 10,
   "shieldHealth" : 800,
 
