@@ -14,6 +14,8 @@ function init()
   if msg then
     message.setHandler(msg, trigger)
   end
+
+  animator.playSound("zap")
 end
 
 function trigger(_, _, sourceId, params)

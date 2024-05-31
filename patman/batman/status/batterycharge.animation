@@ -18,5 +18,8 @@
         { "particle": "electricswoosh1" }
       ]
     }
+  },
+  "sounds": {
+    "zap": [ "/sfx/projectiles/electric_barrier_shock1.ogg", "/sfx/projectiles/electric_barrier_shock2.ogg" ]
   }
 }
