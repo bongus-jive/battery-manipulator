@@ -12,7 +12,7 @@
   "itemTags" : ["weapon"],
 
   "inventoryIcon" : "icon.png",
-  "animation" : "magnorbs.animation",
+  "animation" : "batman.animation",
   "animationParts" : {
     "orb1" : "battery1.png",
     "orb2" : "battery1.png",
@@ -20,7 +20,7 @@
   },
   "animationCustom" : { },
 
-  "scripts" : ["magnorbs.lua"],
+  "scripts" : ["batman.lua"],
 
   "orbitRate" : 0.65,
 
