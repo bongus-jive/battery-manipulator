@@ -17,6 +17,7 @@ function init()
   checkProjectiles()
 
   self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
+  self.lastOrb = 0
 
   animator.resetTransformationGroup("orbs")
   for i = 1, 3 do
@@ -113,7 +114,9 @@ function uninit()
 end
 
 function nextOrb()
-  for i = 1, 3 do
+  for _ = 1, 3 do
+    self.lastOrb = (self.lastOrb + 1) % 3
+    local i = self.lastOrb + 1
     if not storage.projectileIds[i] then return i end
   end
 end
