@@ -39,6 +39,7 @@
                 "size": 1.0,
                 "length": 8,
                 "fullbright": true,
+                "collidesForeground": false,
                 "color": [ 150, 198, 255, 255 ],
                 "light": [ 0, 30, 60 ],
                 "fade": 0.9,
