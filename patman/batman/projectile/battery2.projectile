@@ -3,7 +3,7 @@
   "image": "/patman/batman/images/battery2.png",
   "flippable": false,
   "orientationLocked": true,
-  "damagePoly": [ [ -3, 0 ], [ 0, 3 ], [ 3, 0 ], [ 0, -3 ] ],
+  "damagePoly": [ [ -7, -4 ], [ 2, -7 ], [ 7, 4 ], [ -2, 7 ] ],
   "speed": 90,
   "power": 2.5,
   "knockback": 9,
