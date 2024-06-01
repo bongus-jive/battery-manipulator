@@ -119,7 +119,12 @@ function uninit()
   activeItem.setItemShieldPolys()
   activeItem.setItemDamageSources()
   status.clearPersistentEffects("magnorbShield")
-  animator.stopAllSounds("shieldLoop")
+  
+  for i, projectileId in ipairs(storage.projectileIds) do
+    if projectileId then
+      world.sendEntityMessage(projectileId, "setTargetPosition", nil)
+		end
+  end
 end
 
 function nextOrb()
@@ -175,8 +180,12 @@ end
 
 function checkProjectiles()
   for i, projectileId in ipairs(storage.projectileIds) do
-    if projectileId and not world.entityExists(projectileId) then
-      storage.projectileIds[i] = false
+    if projectileId then
+      if not world.entityExists(projectileId) then
+        storage.projectileIds[i] = false
+      else
+        world.sendEntityMessage(projectileId, "setTargetPosition", firePosition(i))
+      end
 		end
   end
 end
