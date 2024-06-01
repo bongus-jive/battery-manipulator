@@ -1,3 +1,7 @@
-[ 
-	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{ "item":"pat_batman" } }
+[
+	{
+		"op": "add",
+		"path": "/defaultBlueprints/tier1/-",
+		"value": { "item": "pat_batman" }
+	}
 ]

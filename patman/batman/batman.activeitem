@@ -1,52 +1,52 @@
 {
-  "itemName" : "pat_batman",
-  "level" : 6,
-  "price" : 69420,
-  "maxStack" : 1,
-  "rarity" : "Essential",
-  "description" : "batman is short for battery manipulator",
-  "shortdescription" : "Batman",
-  "tooltipKind" : "base",
-  "category" : "uniqueWeapon",
-  "twoHanded" : true,
-  "itemTags" : ["weapon"],
+  "itemName": "pat_batman",
+  "level": 6,
+  "price": 69420,
+  "maxStack": 1,
+  "rarity": "Essential",
+  "description": "batman is short for battery manipulator",
+  "shortdescription": "Batman",
+  "tooltipKind": "base",
+  "category": "uniqueWeapon",
+  "twoHanded": true,
+  "itemTags": [ "weapon" ],
 
-  "inventoryIcon" : "icon.png",
-  "animation" : "batman.animation",
-  "animationParts" : {
-    "orb1" : "battery1.png",
-    "orb2" : "battery1.png",
-    "orb3" : "battery2.png"
+  "inventoryIcon": "icon.png",
+  "animation": "batman.animation",
+  "animationParts": {
+    "orb1": "battery1.png",
+    "orb2": "battery1.png",
+    "orb3": "battery2.png"
   },
-  "animationCustom" : { },
+  "animationCustom": { },
 
-  "scripts" : ["batman.lua"],
+  "scripts": [ "batman.lua" ],
 
-  "orbitRate" : 0.65,
+  "orbitRate": 0.65,
 
-  "projectiles" : [
-		{"type" : "pat_batterymanipulator1"},
-		{"type" : "pat_batterymanipulator1", "parameters" : {"processing" : "?flipy"}},
-		{"type" : "pat_batterymanipulator2"}
-	],
-  "projectileParameters" : {},
+  "projectiles": [
+    { "type": "pat_batterymanipulator1" },
+    { "type": "pat_batterymanipulator1", "parameters": { "processing": "?flipy" } },
+    { "type": "pat_batterymanipulator2" }
+  ],
+  "projectileParameters": { },
 
-  "shieldKnockback" : 18,
-  "shieldEnergyCost" : 10,
-  "shieldHealth" : 800,
+  "shieldKnockback": 18,
+  "shieldEnergyCost": 10,
+  "shieldHealth": 800,
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : 10,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
+  "stances": {
+    "idle": {
+      "armRotation": 10,
+      "twoHanded": false,
+      "allowRotate": true,
+      "allowFlip": true
     },
-    "shield" : {
-      "armRotation" : 0,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
+    "shield": {
+      "armRotation": 0,
+      "twoHanded": false,
+      "allowRotate": true,
+      "allowFlip": true
     }
   }
 }

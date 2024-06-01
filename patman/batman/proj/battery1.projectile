@@ -1,23 +1,23 @@
 {
-  "projectileName" : "pat_batterymanipulator1",
-  "image" : "battery1.png",
-  "flippable" : false,
-  "orientationLocked" : true,
-  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
-  "speed" : 105,
+  "projectileName": "pat_batterymanipulator1",
+  "image": "battery1.png",
+  "flippable": false,
+  "orientationLocked": true,
+  "damagePoly": [ [ -3, 0 ], [ 0, 3 ], [ 3, 0 ], [ 0, -3 ] ],
+  "speed": 105,
   "power": 2,
   "knockback": 7,
-  "damageKind" : "electrichammer",
-	"damageRepeatTimeout" : 0.2,
-  "physics" : "laser",
-  "bounces" : -1,
-  "piercing" : true,
-  "timeToLive" : 10,
+  "damageKind": "electrichammer",
+  "damageRepeatTimeout": 0.2,
+  "physics": "laser",
+  "bounces": -1,
+  "piercing": true,
+  "timeToLive": 10,
 
-  "actionOnCollide" : [
+  "actionOnCollide": [
     {
-      "action" : "sound",
-      "options" : [
+      "action": "sound",
+      "options": [
         "/sfx/projectiles/magnorb_impact1.ogg",
         "/sfx/projectiles/magnorb_impact2.ogg",
         "/sfx/projectiles/magnorb_impact3.ogg"
@@ -27,11 +27,11 @@
 
   "statusEffects": [ "pat_batterymanipulator_charge" ],
 
-  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
+  "scripts": [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua" ],
 
-  "controlForce" : 170,
-  "pickupDistance" : 1,
-  "snapDistance" : 9.0,
+  "controlForce": 170,
+  "pickupDistance": 1,
+  "snapDistance": 9.0,
 
-	"rotationSpeed" : 45
+  "rotationSpeed": 45
 }
