@@ -7,7 +7,6 @@ end
 
 function init()
   self.trails = {}
-  self.lastProjectileIds = {}
 
   local defaults = {
     segments = 10,
@@ -27,20 +26,23 @@ function update(dt)
 
   local projectileIds = animationConfig.animationParameter("projectileIds") or {}
   for i, id in ipairs(projectileIds) do
-    if id ~= self.lastProjectileIds[i] then
+    if not self.trails[i] then
       self.trails[i] = {}
-      self.lastProjectileIds[i] = id
     end
 
-    trail(id, self.trails[i])
+    if id then
+      trail(world.entityPosition(id), self.trails[i])
+    elseif id == false then
+      local pos = animationConfig.partPoint("orb"..i, "orbPosition")
+      pos = activeItemAnimation.handPosition(pos)
+      pos = vec2.add(pos, activeItemAnimation.ownerPosition())
+      trail(pos, self.trails[i])
+    end
   end
 end
 
-function trail(entityId, points)
-  if not entityId then return end
-
-  local entityPos = world.entityPosition(entityId)
-  if not entityPos then return end
+function trail(entityPos, points)
+  if not entityPos or not points then return end
 
   local newPoint = {position = entityPos}
   if points[1] then
