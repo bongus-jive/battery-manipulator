@@ -11,6 +11,8 @@ function init()
   self.cooldownTime = config.getParameter("cooldownTime", 0)
   self.cooldownTimer = self.cooldownTime
 
+  self.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
+
   initStances()
 
   storage.projectileIds = storage.projectileIds or {false, false, false}
@@ -138,7 +140,7 @@ function fire(orbIndex)
 	
 	local projectile = self.projectiles[orbIndex]
   local params = sb.jsonMerge(self.projectileParameters, projectile.parameters or {})
-  params.powerMultiplier = activeItem.ownerPowerMultiplier()
+  params.powerMultiplier = activeItem.ownerPowerMultiplier() * self.damageLevelMultiplier
 	
   local projectileId = world.spawnProjectile(
 		projectile.type,
