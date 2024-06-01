@@ -18,6 +18,7 @@
     "projectileParameters": {
       "power": 4,
       "timeToLive": 0.08,
+      "onlyHitTerrain": true,
       "periodicActions": [
         {
           "time": 0,
