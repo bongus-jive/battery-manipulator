@@ -11,12 +11,12 @@
   "twoHanded": true,
   "itemTags": [ "weapon" ],
 
-  "inventoryIcon": "icon.png",
+  "inventoryIcon": "images/icon.png",
   "animation": "batman.animation",
   "animationParts": {
-    "orb1": "battery1.png",
-    "orb2": "battery1.png?flipy",
-    "orb3": "battery2.png"
+    "orb1": "images/battery1.png",
+    "orb2": "images/battery1.png?flipy",
+    "orb3": "images/battery2.png"
   },
   "animationCustom": { },
 

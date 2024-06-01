@@ -4,7 +4,7 @@
   "defaultDuration": 4,
 
   "label": "Battery Charged",
-  "icon": "/patman/batman/status/batterycharge.png",
+  "icon": "/patman/batman/images/charge.png",
 
   "scripts": [ "batterycharge.lua" ],
   "scriptDelta": 1,
