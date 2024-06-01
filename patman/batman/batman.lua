@@ -49,6 +49,10 @@ function init()
   end
 
   setStance("idle")
+
+  animator.stopAllSounds("shieldLoop")
+  animator.setSoundVolume("shieldLoop", 0)
+  animator.playSound("shieldLoop", -1)
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -86,6 +90,9 @@ function update(dt, fireMode, shiftHeld)
       self.listener:update()
     end
   end
+
+  local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
+  animator.setSoundVolume("shieldLoop", transformRatio)
 
   if self.shieldTransformTimer > 0 then
     local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
@@ -178,7 +185,6 @@ function activateShield()
   self.shieldActive = true
   animator.resetTransformationGroup("orbs")
   animator.playSound("shieldOn")
-  animator.playSound("shieldLoop", -1)
   setStance("shield")
   activeItem.setItemShieldPolys({self.shieldPoly})
   activeItem.setItemDamageSources({self.knockbackDamageSource})
@@ -203,7 +209,6 @@ end
 function deactivateShield()
   self.shieldActive = false
   animator.playSound("shieldOff")
-  animator.stopAllSounds("shieldLoop")
   setStance("idle")
   activeItem.setItemShieldPolys()
   activeItem.setItemDamageSources()
