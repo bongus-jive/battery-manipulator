@@ -1,6 +1,6 @@
 {
   "projectileName": "pat_batterymanipulator1",
-  "image": "battery1.png",
+  "image": "/patman/batman/battery1.png",
   "flippable": false,
   "orientationLocked": true,
   "damagePoly": [ [ -3, 0 ], [ 0, 3 ], [ 3, 0 ], [ 0, -3 ] ],
