@@ -1,7 +1,7 @@
 {
   "name": "pat_batterymanipulator_charge",
   "blockingStat": "electricStatusImmunity",
-  "defaultDuration": 4,
+  "defaultDuration": 1,
 
   "label": "Battery Charged",
   "icon": "/patman/batman/images/charge.png",
@@ -19,7 +19,7 @@
 
     "projectileType": "electricplasmaexplosion",
     "projectileParameters": {
-      "power": 2,
+      "power": 1.5,
       "speed": 0,
       "timeToLive": 0.08,
       "onlyHitTerrain": true,
