@@ -20,6 +20,7 @@
     "projectileType": "electricplasmaexplosion",
     "projectileParameters": {
       "power": 2,
+      "speed": 0,
       "timeToLive": 0.08,
       "onlyHitTerrain": true,
       "periodicActions": [
