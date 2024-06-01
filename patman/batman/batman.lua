@@ -19,7 +19,7 @@ function init()
   checkProjectiles()
 
   self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
-  self.lastOrb = 0
+  self.lastOrb = 1
 
   animator.resetTransformationGroup("orbs")
   for i = 1, 3 do
@@ -74,11 +74,13 @@ function update(dt, fireMode, shiftHeld)
 
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
   end
+  
+  local nextOrbIndex = nextOrb()
 
   if self.shieldTransformTimer == 0 and fireMode == "primary" and self.lastFireMode ~= "primary" and self.cooldownTimer == 0 then
-    local nextOrbIndex = nextOrb()
     if nextOrbIndex then
       fire(nextOrbIndex)
+      self.lastOrb = nextOrbIndex
     end
   end
   self.lastFireMode = fireMode
@@ -95,7 +97,6 @@ function update(dt, fireMode, shiftHeld)
   animator.setSoundVolume("shieldLoop", transformRatio)
 
   if self.shieldTransformTimer > 0 then
-    local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
     setOrbPosition(1 - transformRatio * 0.7, transformRatio * 0.75)
     animator.resetTransformationGroup("orbs")
     animator.translateTransformationGroup("orbs", {transformRatio * -1.5, 0})
@@ -107,8 +108,10 @@ function update(dt, fireMode, shiftHeld)
     animator.resetTransformationGroup("orbs")
     animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
     for i = 1, 3 do
-      animator.rotateTransformationGroup("orb"..i, self.orbitRate * dt)
-      animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
+      local n = "orb"..i
+      animator.rotateTransformationGroup(n, self.orbitRate * dt)
+      animator.setAnimationState(n, storage.projectileIds[i] == false and "orb" or "hidden")
+      animator.setParticleEmitterActive(n, storage.projectileIds[i] == false)
     end
   end
 
@@ -128,9 +131,10 @@ function uninit()
 end
 
 function nextOrb()
+  local i = self.lastOrb
   for _ = 1, 3 do
-    self.lastOrb = (self.lastOrb + 1) % 3
-    local i = self.lastOrb + 1
+    i = i + 1
+    if i > 3 then i = 1 end
     if not storage.projectileIds[i] then return i end
   end
 end

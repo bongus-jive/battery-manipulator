@@ -89,32 +89,57 @@
 
   "transformationGroups": {
     "weapon": { },
-    "orbs": {
-      "interpolated": true
-    },
-    "orb1": {
-      "interpolated": true
-    },
-    "orb2": {
-      "interpolated": true
-    },
-    "orb3": {
-      "interpolated": true
-    }
+    "orbs": { "interpolated": true },
+    "orb1": { "interpolated": true },
+    "orb2": { "interpolated": true },
+    "orb3": { "interpolated": true }
   },
 
   "particleEmitters": {
     "glove": {
       "active": true,
       "transformationGroups": [ "weapon" ],
-      "offsetRegion": [ 1, 1, -1, -1 ],
-      "burstCount": 4,
-      "particles": [ {
-          "particle": "protectorblade"
-        },
-        {
-          "particle": "protectorblade2"
-        }
+      "offsetRegion": [ 0.2, 0.2, -0.2, -0.2 ],
+      "emissionRate": 2,
+      "particles": [
+        { "particle": "protectorblade" },
+        { "particle": "protectorblade2" }
+      ]
+    },
+    "orb1": {
+      "active": false,
+      "anchorPart": "orb1",
+      "offsetRegion": [ 0.2, 0.4, -0.2, -0.4 ],
+      "emissionRate": 3,
+      "randomSelectCount": 1,
+      "particles": [
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1", "count": 1 }
+      ]
+    },
+    "orb2": {
+      "active": false,
+      "anchorPart": "orb2",
+      "offsetRegion": [ 0.2, 0.4, -0.2, -0.4 ],
+      "emissionRate": 3,
+      "randomSelectCount": 1,
+      "particles": [
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1", "count": 1 }
+      ]
+    },
+    "orb3": {
+      "active": false,
+      "anchorPart": "orb3",
+      "offsetRegion": [ 0.25, 0.45, -0.25, -0.45 ],
+      "emissionRate": 3,
+      "randomSelectCount": 1,
+      "particles": [
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1", "count": 1 }
       ]
     }
   },
@@ -133,7 +158,7 @@
       "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
     },
     "shieldOn": [ "/sfx/melee/sword_guard.ogg" ],
-    "shieldLoop": [ "/sfx/gun/magnorbs_shield_loop2.ogg" ],
+    "shieldLoop": [ "/sfx/gun/magnorbs_shield_loop1.ogg" ],
     "shieldOff": [ ],
     "shieldBlock": [ "/sfx/melee/shield_block_metal.ogg" ],
     "shieldBreak": [ "/sfx/melee/shield_break_metal.ogg" ]
