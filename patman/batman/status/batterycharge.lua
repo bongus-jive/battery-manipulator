@@ -12,6 +12,8 @@ function init()
 
   local msg = effect.getParameter("receiveMessage")
   if msg then
+    requiredMessages = effect.getParameter("messagesRequired", 1)
+    recievedMessages = 0
     message.setHandler(msg, trigger)
   end
 
@@ -19,6 +21,14 @@ function init()
 end
 
 function trigger(_, _, sourceId, params)
+  recievedMessages = recievedMessages + 1
+
+  animator.playSound("zap")
+  
+  if recievedMessages < requiredMessages then
+    return
+  end
+
   if projectileType then
     params = sb.jsonMerge(projectileParameters, params or {})
     local angle = math.random() * math.pi * 2
