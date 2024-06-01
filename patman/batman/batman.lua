@@ -6,17 +6,17 @@ require "/scripts/activeitem/stances.lua"
 function init()
   activeItem.setCursor("/cursors/reticle0.cursor")
 
-  projectiles = config.getParameter("projectiles")
-  projectileParameters = config.getParameter("projectileParameters", {})
-  cooldownTime = config.getParameter("cooldownTime", 0)
-  cooldownTimer = cooldownTime
+  self.projectiles = config.getParameter("projectiles")
+  self.projectileParameters = config.getParameter("projectileParameters", {})
+  self.cooldownTime = config.getParameter("cooldownTime", 0)
+  self.cooldownTimer = self.cooldownTime
 
   initStances()
 
   storage.projectileIds = storage.projectileIds or {false, false, false}
   checkProjectiles()
 
-  orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
+  self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
 
   animator.resetTransformationGroup("orbs")
   for i = 1, 3 do
@@ -24,16 +24,17 @@ function init()
   end
   setOrbPosition(1)
 
-  shieldActive = false
-  shieldTransformTimer = 0
-  shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
-  shieldPoly = animator.partPoly("glove", "shieldPoly")
-  shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
-  shieldHealth = config.getParameter("shieldHealth", 100)
-  shieldKnockback = config.getParameter("shieldKnockback", 0)
+  self.shieldActive = false
+  self.shieldTransformTimer = 0
+  self.shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
+  self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
+  self.shieldHealth = config.getParameter("shieldHealth", 100)
+  self.shieldPoly = animator.partPoly("glove", "shieldPoly")
+  
+  local shieldKnockback = config.getParameter("shieldKnockback", 0)
   if shieldKnockback > 0 then
-    knockbackDamageSource = {
-      poly = shieldPoly,
+    self.knockbackDamageSource = {
+      poly = self.shieldPoly,
       damage = 0,
       damageType = "Knockback",
       sourceEntity = activeItem.ownerEntityId(),
@@ -48,55 +49,55 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
-  cooldownTimer = math.max(0, cooldownTimer)
+  self.cooldownTimer = math.max(0, self.cooldownTimer)
 
   updateStance(dt)
   checkProjectiles()
 
   if fireMode == "alt" and availableOrbCount() == 3 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
-    if not shieldActive then
+    if not self.shieldActive then
       activateShield()
     end
     setOrbAnimationState("orb")
-    shieldTransformTimer = math.min(shieldTransformTime, shieldTransformTimer + dt)
+    self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
   else
-    if shieldTransformTimer > 0 and shieldTransformTimer < dt then
+    if self.shieldTransformTimer > 0 and self.shieldTransformTimer < dt then
       setOrbPosition(1)
     end
 
-    shieldTransformTimer = math.max(0, shieldTransformTimer - dt)
+    self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
   end
 
-  if shieldTransformTimer == 0 and fireMode == "primary" and lastFireMode ~= "primary" and cooldownTimer == 0 then
+  if self.shieldTransformTimer == 0 and fireMode == "primary" and self.lastFireMode ~= "primary" and self.cooldownTimer == 0 then
     local nextOrbIndex = nextOrb()
     if nextOrbIndex then
       fire(nextOrbIndex)
     end
   end
-  lastFireMode = fireMode
+  self.lastFireMode = fireMode
 
-  if shieldActive then
-    if not status.resourcePositive("shieldStamina") or not status.overConsumeResource("energy", shieldEnergyCost * dt) then
+  if self.shieldActive then
+    if not status.resourcePositive("shieldStamina") or not status.overConsumeResource("energy", self.shieldEnergyCost * dt) then
       deactivateShield()
     else
-      listener:update()
+      self.listener:update()
     end
   end
 
-  if shieldTransformTimer > 0 then
-    local transformRatio = shieldTransformTimer / shieldTransformTime
+  if self.shieldTransformTimer > 0 then
+    local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
     setOrbPosition(1 - transformRatio * 0.7, transformRatio * 0.75)
     animator.resetTransformationGroup("orbs")
     animator.translateTransformationGroup("orbs", {transformRatio * -1.5, 0})
   else
-    if shieldActive then
+    if self.shieldActive then
       deactivateShield()
     end
 
     animator.resetTransformationGroup("orbs")
     animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
     for i = 1, 3 do
-      animator.rotateTransformationGroup("orb"..i, orbitRate * dt)
+      animator.rotateTransformationGroup("orb"..i, self.orbitRate * dt)
       animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
     end
   end
@@ -132,8 +133,8 @@ function fire(orbIndex)
   local collision = world.lineCollision(mcontroller.position(), firePos)
   if collision then firePos = collision end
 	
-	local projectile = projectiles[orbIndex]
-  local params = sb.jsonMerge(projectileParameters, projectile.parameters or {})
+	local projectile = self.projectiles[orbIndex]
+  local params = sb.jsonMerge(self.projectileParameters, projectile.parameters or {})
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
 	
   local projectileId = world.spawnProjectile(
@@ -147,7 +148,7 @@ function fire(orbIndex)
 	
   if projectileId then
     storage.projectileIds[orbIndex] = projectileId
-    cooldownTimer = cooldownTime
+    self.cooldownTimer = self.cooldownTime
     animator.playSound("fire")
   end
 end
@@ -169,15 +170,15 @@ function checkProjectiles()
 end
 
 function activateShield()
-  shieldActive = true
+  self.shieldActive = true
   animator.resetTransformationGroup("orbs")
   animator.playSound("shieldOn")
   animator.playSound("shieldLoop", -1)
   setStance("shield")
-  activeItem.setItemShieldPolys({shieldPoly})
-  activeItem.setItemDamageSources({knockbackDamageSource})
-  status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = shieldHealth}})
-  listener = damageListener("damageTaken", function(notifications)
+  activeItem.setItemShieldPolys({self.shieldPoly})
+  activeItem.setItemDamageSources({self.knockbackDamageSource})
+  status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = self.shieldHealth}})
+  self.listener = damageListener("damageTaken", function(notifications)
     for _,notification in pairs(notifications) do
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("shieldStamina") then
@@ -192,7 +193,7 @@ function activateShield()
 end
 
 function deactivateShield()
-  shieldActive = false
+  self.shieldActive = false
   animator.playSound("shieldOff")
   animator.stopAllSounds("shieldLoop")
   setStance("idle")
