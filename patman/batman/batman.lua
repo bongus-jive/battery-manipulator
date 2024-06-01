@@ -178,18 +178,21 @@ function activateShield()
   activeItem.setItemShieldPolys({self.shieldPoly})
   activeItem.setItemDamageSources({self.knockbackDamageSource})
   status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = self.shieldHealth}})
-  self.listener = damageListener("damageTaken", function(notifications)
-    for _,notification in pairs(notifications) do
-      if notification.hitType == "ShieldHit" then
-        if status.resourcePositive("shieldStamina") then
-          animator.playSound("shieldBlock")
-        else
-          animator.playSound("shieldBreak")
-        end
-        return
+
+  self.listener = damageListener("damageTaken", damageTaken)
+end
+
+function damageTaken(notifications)
+  for _, notification in pairs(notifications) do
+    if notification.hitType == "ShieldHit" then
+      if status.resourcePositive("shieldStamina") then
+        animator.playSound("shieldBlock")
+      else
+        animator.playSound("shieldBreak")
       end
+      return
     end
-  end)
+  end
 end
 
 function deactivateShield()
