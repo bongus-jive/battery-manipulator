@@ -63,7 +63,7 @@
         "partStates": {
           "orb2": {
             "orb": {
-              "properties": { "image": "<partImage>?flipy" }
+              "properties": { "image": "<partImage>" }
             }
           }
         }
