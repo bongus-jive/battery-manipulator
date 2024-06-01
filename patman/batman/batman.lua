@@ -33,6 +33,8 @@ function init()
   self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
   self.shieldHealth = config.getParameter("shieldHealth", 100)
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
+
+  self.orbReturnForce = config.getParameter("orbReturnForce")
   
   local shieldKnockback = config.getParameter("shieldKnockback", 0)
   if shieldKnockback > 0 then
@@ -61,12 +63,16 @@ function update(dt, fireMode, shiftHeld)
   updateStance(dt)
   checkProjectiles()
 
-  if fireMode == "alt" and availableOrbCount() == 3 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
-    if not self.shieldActive then
-      activateShield()
+  if fireMode == "alt" then
+    if availableOrbCount() == 3 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
+      if not self.shieldActive then
+        activateShield()
+      end
+      setOrbAnimationState("orb")
+      self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
+    elseif self.orbReturnForce and self.lastFireMode ~= "alt" then
+      sendMessageToOrbs("return", self.orbReturnForce)
     end
-    setOrbAnimationState("orb")
-    self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
   else
     if self.shieldTransformTimer > 0 and self.shieldTransformTimer < dt then
       setOrbPosition(1)
@@ -124,12 +130,8 @@ function uninit()
   activeItem.setItemShieldPolys()
   activeItem.setItemDamageSources()
   status.clearPersistentEffects("magnorbShield")
-  
-  for i, projectileId in ipairs(storage.projectileIds) do
-    if projectileId then
-      world.sendEntityMessage(projectileId, "setTargetPosition", nil)
-		end
-  end
+
+  sendMessageToOrbs("setTargetPosition", nil)
 end
 
 function nextOrb()
@@ -149,6 +151,14 @@ function availableOrbCount()
     end
   end
   return available
+end
+
+function sendMessageToOrbs(message, ...)
+  for i, projectileId in ipairs(storage.projectileIds) do
+    if projectileId then
+      world.sendEntityMessage(projectileId, message, ...)
+		end
+  end
 end
 
 function fire(orbIndex)

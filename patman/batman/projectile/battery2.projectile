@@ -25,7 +25,7 @@
     }
   ],
 
-  "scripts": [ "/scripts/projectiles/boomerangprojectile.lua", "spin.lua", "messageOnHit.lua" ],
+  "scripts": [ "/scripts/projectiles/boomerangprojectile.lua", "boomerangreturn.lua", "spin.lua", "messageOnHit.lua" ],
 
   "controlForce": 150,
   "pickupDistance": 1,

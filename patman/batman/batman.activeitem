@@ -45,6 +45,8 @@
   "shieldEnergyCost": 10,
   "shieldHealth": 800,
 
+  "orbReturnForce": 1200,
+
   "stances": {
     "idle": {
       "armRotation": 10,
