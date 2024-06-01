@@ -116,6 +116,8 @@ function update(dt, fireMode, shiftHeld)
   end
 
   updateAim()
+
+  activeItem.setScriptedAnimationParameter("projectileIds", storage.projectileIds)
 end
 
 function uninit()

@@ -20,6 +20,15 @@
   },
   "animationCustom": { },
 
+  "animationScripts": [ "trail.lua" ],
+  "scriptedAnimationParameters": {
+    "trailConfig": {
+      "segments": 12,
+      "color": [ 120, 140, 160, 120 ],
+      "width": 0.4
+    }
+  },
+
   "scripts": [ "batman.lua" ],
 
   "projectiles": [
