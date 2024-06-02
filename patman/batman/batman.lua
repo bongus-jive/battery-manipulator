@@ -9,8 +9,6 @@ function init()
   
   self.projectiles = config.getParameter("projectiles")
   self.projectileParameters = config.getParameter("projectileParameters", {})
-  self.cooldownTime = config.getParameter("cooldownTime", 0)
-  self.cooldownTimer = self.cooldownTime
 
   self.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
 
@@ -67,8 +65,6 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
-  self.cooldownTimer = math.max(0, self.cooldownTimer)
-
   updateStance(dt)
   checkProjectiles()
 
@@ -92,7 +88,7 @@ function update(dt, fireMode, shiftHeld)
   
   local nextOrbIndex = nextOrb()
 
-  if self.shieldTransformTimer == 0 and fireMode == "primary" and self.lastFireMode ~= "primary" and self.cooldownTimer == 0 then
+  if self.shieldTransformTimer == 0 and fireMode == "primary" and self.lastFireMode ~= "primary" then
     if nextOrbIndex then
       fire(nextOrbIndex)
       self.lastOrb = nextOrbIndex
@@ -190,7 +186,6 @@ function fire(orbIndex)
 	
   if projectileId then
     storage.projectileIds[orbIndex] = projectileId
-    self.cooldownTimer = self.cooldownTime
     animator.playSound("fire")
   end
 end
