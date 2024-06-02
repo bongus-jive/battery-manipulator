@@ -45,7 +45,8 @@
   "shieldEnergyCost": 10,
   "shieldHealth": 800,
 
-  "orbReturnForce": 1200,
+  "orbReturnControlForce": 1200,
+  "orbReturnPickupDistance": 1.6,
 
   "stances": {
     "idle": {

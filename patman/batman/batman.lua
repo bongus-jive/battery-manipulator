@@ -34,7 +34,8 @@ function init()
   self.shieldHealth = config.getParameter("shieldHealth", 100)
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
 
-  self.orbReturnForce = config.getParameter("orbReturnForce")
+  self.orbReturnControlForce = config.getParameter("orbReturnControlForce")
+  self.orbReturnPickupDistance = config.getParameter("orbReturnPickupDistance")
   
   local shieldKnockback = config.getParameter("shieldKnockback", 0)
   if shieldKnockback > 0 then
@@ -70,8 +71,8 @@ function update(dt, fireMode, shiftHeld)
       end
       setOrbAnimationState("orb")
       self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
-    elseif self.orbReturnForce and self.lastFireMode ~= "alt" then
-      sendMessageToOrbs("return", self.orbReturnForce)
+    elseif self.lastFireMode ~= "alt" then
+      sendMessageToOrbs("return", self.orbReturnControlForce, self.orbReturnPickupDistance)
     end
   else
     if self.shieldTransformTimer > 0 and self.shieldTransformTimer < dt then
