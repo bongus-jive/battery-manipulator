@@ -38,6 +38,8 @@
   ],
   "projectileParameters": { },
 
+  "orbCount": 3,
+
   "orbitRate": 0.5,
 
   "shieldTransformTime": 0.12,

@@ -5,7 +5,8 @@ require "/scripts/activeitem/stances.lua"
 
 function init()
   activeItem.setCursor("/cursors/reticle0.cursor")
-
+  activeItem.setOutsideOfHand(true)
+  
   self.projectiles = config.getParameter("projectiles")
   self.projectileParameters = config.getParameter("projectileParameters", {})
   self.cooldownTime = config.getParameter("cooldownTime", 0)
@@ -15,14 +16,21 @@ function init()
 
   initStances()
 
-  storage.projectileIds = storage.projectileIds or {false, false, false}
+  self.orbCount = config.getParameter("orbCount", 3)
+
+  if not storage.projectileIds then
+		storage.projectileIds = {}
+		for i = 1, self.orbCount do
+			storage.projectileIds[i] = false
+		end
+	end
   checkProjectiles()
 
   self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
   self.lastOrb = 1
 
   animator.resetTransformationGroup("orbs")
-  for i = 1, 3 do
+  for i = 1, self.orbCount do
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
   setOrbPosition(1)
@@ -65,7 +73,7 @@ function update(dt, fireMode, shiftHeld)
   checkProjectiles()
 
   if fireMode == "alt" then
-    if availableOrbCount() == 3 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
+    if availableOrbCount() == self.orbCount and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
       if not self.shieldActive then
         activateShield()
       end
@@ -114,7 +122,7 @@ function update(dt, fireMode, shiftHeld)
 
     animator.resetTransformationGroup("orbs")
     animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
-    for i = 1, 3 do
+    for i = 1, self.orbCount do
       local n = "orb"..i
       animator.rotateTransformationGroup(n, self.orbitRate * dt)
       animator.setAnimationState(n, storage.projectileIds[i] == false and "orb" or "hidden")
@@ -137,16 +145,16 @@ end
 
 function nextOrb()
   local i = self.lastOrb
-  for _ = 1, 3 do
+  for _ = 1, self.orbCount do
     i = i + 1
-    if i > 3 then i = 1 end
+    if i > self.orbCount then i = 1 end
     if not storage.projectileIds[i] then return i end
   end
 end
 
 function availableOrbCount()
   local available = 0
-  for i = 1, 3 do
+  for i = 1, self.orbCount do
     if not storage.projectileIds[i] then
       available = available + 1
     end
@@ -242,15 +250,16 @@ function deactivateShield()
 end
 
 function setOrbPosition(spaceFactor, distance)
-  for i = 1, 3 do
+  local h = self.orbCount / 2 + 0.5
+  for i = 1, self.orbCount do
     animator.resetTransformationGroup("orb"..i)
     animator.translateTransformationGroup("orb"..i, {distance or 0, 0})
-    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / 3))
+    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - h) / self.orbCount))
   end
 end
 
 function setOrbAnimationState(newState)
-  for i = 1, 3 do
+  for i = 1, self.orbCount do
     animator.setAnimationState("orb"..i, newState)
   end
 end
