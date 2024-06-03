@@ -30,14 +30,15 @@ function update(dt)
       self.trails[i] = {}
     end
 
+    local pos
     if id then
-      trail(world.entityPosition(id), self.trails[i])
+      pos = world.entityPosition(id)
     elseif id == false then
-      local pos = animationConfig.partPoint("orb"..i, "orbPosition")
-      pos = activeItemAnimation.handPosition(pos)
-      pos = vec2.add(pos, activeItemAnimation.ownerPosition())
-      trail(pos, self.trails[i])
+      local partPos = animationConfig.partPoint("orb"..i, "orbPosition")
+      local handPos = activeItemAnimation.handPosition(partPos)
+      pos = vec2.add(handPos, activeItemAnimation.ownerPosition())
     end
+    trail(pos, self.trails[i])
   end
 end
 
