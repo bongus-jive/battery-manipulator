@@ -157,6 +157,11 @@
       "pitchMultiplier": 1.12,
       "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
     },
+    "return": {
+      "pitchMultiplier": 0.88,
+      "volume": 0.55,
+      "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
+    },
     "shieldOn": [ "/sfx/melee/sword_guard.ogg" ],
     "shieldLoop": [ "/sfx/gun/magnorbs_shield_loop1.ogg" ],
     "shieldOff": [ ],

@@ -202,6 +202,7 @@ function checkProjectiles()
   for i, projectileId in ipairs(storage.projectileIds) do
     if projectileId then
       if not world.entityExists(projectileId) then
+        animator.playSound("return")
         storage.projectileIds[i] = false
       else
         world.sendEntityMessage(projectileId, "setTargetPosition", firePosition(i))
