@@ -1,7 +1,7 @@
 {
   "itemName": "pat_batman",
   "level": 6,
-  "price": 69420,
+  "price": 6000,
   "maxStack": 1,
   "rarity": "Legendary",
   "description": "batman is short for battery manipulator",
@@ -23,33 +23,40 @@
   "animationScripts": [ "trail.lua" ],
   "scriptedAnimationParameters": {
     "trailConfig": {
-      "segments": 12,
+      "segments": 15,
       "color": [ 120, 140, 160, 120 ],
       "width": 0.4
     }
   },
 
   "scripts": [ "batman.lua" ],
-
-  "projectiles": [
-    { "type": "pat_batterymanipulator1" },
-    { "type": "pat_batterymanipulator1", "parameters": { "processing": "?flipy" } },
-    { "type": "pat_batterymanipulator2" }
-  ],
-  "projectileParameters": { },
-
-  "orbCount": 3,
-
-  "orbitRate": 0.5,
-
-  "shieldTransformTime": 0.12,
-  "shieldKnockback": 18,
-  "shieldEnergyCost": 10,
-  "shieldHealth": 800,
-
-  "orbReturnControlForce": 1200,
-  "orbReturnPickupDistance": 1.6,
-
+  "batmanConfig": {
+    "projectiles": [
+      { "type": "pat_batterymanipulator1" },
+      { "type": "pat_batterymanipulator1", "parameters": { "processing": "?flipy" } },
+      { "type": "pat_batterymanipulator2" }
+    ],
+    "projectileParameters": { },
+  
+    "orbitRate": 0.6,
+    "orbitRateShielded": 1.8,
+  
+    "orbitDistance": 1.5,
+    "orbitDistanceShielded": 2.75,
+  
+    "orbRotationRate": 0.67,
+    "orbRotationRateShielded": 1.2,
+  
+    "orbCount": 3,
+    "orbReturnControlForce": 1200,
+    "orbReturnPickupDistance": 1.6,
+  
+    "shieldTransformTime": 0.18,
+    "shieldKnockback": 18,
+    "shieldEnergyCost": 10,
+    "shieldHealth": 800
+  },
+  
   "stances": {
     "idle": {
       "armRotation": 10,
@@ -58,7 +65,7 @@
       "allowFlip": true
     },
     "shield": {
-      "armRotation": 0,
+      "armRotation": 10,
       "twoHanded": false,
       "allowRotate": true,
       "allowFlip": true

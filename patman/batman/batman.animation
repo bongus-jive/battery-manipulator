@@ -33,13 +33,13 @@
           "transformationGroups": [ "weapon" ],
           "rotationCenter": [ -1, 0 ],
           "offset": [ 0, -0.25 ],
-          "shieldPoly": [ [ 0.0, -1.75 ], [ 0.0, 2.25 ], [ 0.875, 1.0 ], [ 0.875, -0.5 ] ]
+          "shieldPoly": [ [ 3, 0 ], [ 2.121, 2.121 ], [ 0, 3 ], [ -2.121, 2.121 ], [ -3, 0 ], [ -2.121, -2.121 ], [ 0, -3 ], [ 2.121, -2.121 ] ]
         }
       },
       "orb1": {
         "properties": {
           "centered": true,
-          "offset": [ 1.5, 0 ],
+          "offset": [ 0, 0 ],
           "orbPosition": [ 0, 0 ],
           "transformationGroups": [ "weapon", "orb1", "orbs" ]
         },
@@ -55,7 +55,7 @@
       "orb2": {
         "properties": {
           "centered": true,
-          "offset": [ 1.5, 0 ],
+          "offset": [ 0, 0 ],
           "orbPosition": [ 0, 0 ],
           "transformationGroups": [ "weapon", "orb2", "orbs" ]
         },
@@ -71,7 +71,7 @@
       "orb3": {
         "properties": {
           "centered": true,
-          "offset": [ 1.5, 0 ],
+          "offset": [ 0, 0 ],
           "orbPosition": [ 0, 0 ],
           "transformationGroups": [ "weapon", "orb3", "orbs" ]
         },
@@ -159,7 +159,7 @@
     },
     "return": {
       "pitchMultiplier": 0.88,
-      "volume": 0.55,
+      "volume": 0.8,
       "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
     },
     "shieldOn": [ "/sfx/melee/sword_guard.ogg" ],

@@ -4,61 +4,56 @@ require "/scripts/status.lua"
 require "/scripts/activeitem/stances.lua"
 
 function init()
+  local cfg = config.getParameter("batmanConfig")
+  for k, v in pairs(cfg) do
+    self[k] = v
+  end
+
   activeItem.setCursor("/cursors/reticle0.cursor")
   activeItem.setOutsideOfHand(true)
   
-  self.projectiles = config.getParameter("projectiles")
-  self.projectileParameters = config.getParameter("projectileParameters", {})
-
   self.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
+  
+  self.orbitRate = self.orbitRate * -2 * math.pi
+  self.orbitRateShielded = self.orbitRateShielded * -2 * math.pi
+  self.orbitRotation = 0
+  
+  self.orbRotationRate = self.orbRotationRate * 2 * math.pi
+  self.orbRotationRateShielded = self.orbRotationRateShielded * 2 * math.pi
+  self.orbRotations = {}
+  
+  storage.lastOrb = storage.lastOrb or 1
+  storage.projectileIds = storage.projectileIds or {}
 
-  initStances()
-
-  self.orbCount = config.getParameter("orbCount", 3)
-
-  if not storage.projectileIds then
-		storage.projectileIds = {}
-		for i = 1, self.orbCount do
-			storage.projectileIds[i] = false
-		end
-	end
-  checkProjectiles()
-
-  self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
-  self.lastOrb = 1
-
-  animator.resetTransformationGroup("orbs")
   for i = 1, self.orbCount do
+    storage.projectileIds[i] = storage.projectileIds[i] or false
+    self.orbRotations[i] = 0
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
-  setOrbPosition(1)
+  
+  checkProjectiles()
 
   self.shieldActive = false
   self.shieldTransformTimer = 0
-  self.shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
-  self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
-  self.shieldHealth = config.getParameter("shieldHealth", 100)
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
 
-  self.orbReturnControlForce = config.getParameter("orbReturnControlForce")
-  self.orbReturnPickupDistance = config.getParameter("orbReturnPickupDistance")
-  
-  local shieldKnockback = config.getParameter("shieldKnockback", 0)
-  if shieldKnockback > 0 then
+  if self.shieldKnockback > 0 then
     self.knockbackDamageSource = {
       poly = self.shieldPoly,
       damage = 0,
       damageType = "Knockback",
       sourceEntity = activeItem.ownerEntityId(),
       team = activeItem.ownerTeam(),
-      knockback = shieldKnockback,
+      knockback = self.shieldKnockback,
       rayCheck = true,
       damageRepeatTimeout = 0.5
     }
   end
 
+  initStances()
   setStance("idle")
 
+  animator.resetTransformationGroup("orbs")
   animator.stopAllSounds("shieldLoop")
   animator.setSoundVolume("shieldLoop", 0)
   animator.playSound("shieldLoop", -1)
@@ -67,68 +62,68 @@ end
 function update(dt, fireMode, shiftHeld)
   updateStance(dt)
   checkProjectiles()
-
-  if fireMode == "alt" then
-    if availableOrbCount() == self.orbCount and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
-      if not self.shieldActive then
-        activateShield()
-      end
-      setOrbAnimationState("orb")
-      self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
-    elseif self.lastFireMode ~= "alt" then
-      sendMessageToOrbs("return", self.orbReturnControlForce, self.orbReturnPickupDistance)
-    end
-  else
-    if self.shieldTransformTimer > 0 and self.shieldTransformTimer < dt then
-      setOrbPosition(1)
-    end
-
-    self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
-  end
   
   local nextOrbIndex = nextOrb()
 
-  if self.shieldTransformTimer == 0 and fireMode == "primary" and self.lastFireMode ~= "primary" then
-    if nextOrbIndex then
-      fire(nextOrbIndex)
-      self.lastOrb = nextOrbIndex
-    end
+  if fireMode == "primary" and self.lastFireMode ~= "primary" and nextOrbIndex then
+    fire(nextOrbIndex)
+    storage.lastOrb = nextOrbIndex
   end
-  self.lastFireMode = fireMode
 
   if self.shieldActive then
-    if not status.resourcePositive("shieldStamina") or not status.overConsumeResource("energy", self.shieldEnergyCost * dt) then
-      deactivateShield()
-    else
+    if fireMode == "alt"
+    and availableOrbCount() == self.orbCount
+    and status.resourcePositive("shieldStamina")
+    and status.overConsumeResource("energy", self.shieldEnergyCost * dt) then
+      self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
       self.listener:update()
+    else
+      deactivateShield()
+    end
+  else
+    if fireMode == "alt" then
+      if availableOrbCount() == self.orbCount
+      and status.resourcePositive("shieldStamina")
+      and not status.resourceLocked("energy") then
+        activateShield()
+      elseif self.lastFireMode ~= "alt" then
+        sendMessageToOrbs("return", self.orbReturnControlForce, self.orbReturnPickupDistance)
+      end
+    else
+      self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
     end
   end
 
   local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
   animator.setSoundVolume("shieldLoop", transformRatio)
 
-  if self.shieldTransformTimer > 0 then
-    setOrbPosition(1 - transformRatio * 0.7, transformRatio * 0.75)
-    animator.resetTransformationGroup("orbs")
-    animator.translateTransformationGroup("orbs", {transformRatio * -1.5, 0})
-  else
-    if self.shieldActive then
-      deactivateShield()
-    end
+  local orbitRate = util.lerp(transformRatio, self.orbitRate, self.orbitRateShielded) * dt
+  self.orbitRotation = (self.orbitRotation + orbitRate) % (math.pi * 2)
 
-    animator.resetTransformationGroup("orbs")
-    animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
-    for i = 1, self.orbCount do
-      local n = "orb"..i
-      animator.rotateTransformationGroup(n, self.orbitRate * dt)
-      animator.setAnimationState(n, storage.projectileIds[i] == false and "orb" or "hidden")
-      animator.setParticleEmitterActive(n, storage.projectileIds[i] == false)
-    end
+  local orbitDistance = util.lerp(transformRatio, self.orbitDistance, self.orbitDistanceShielded)
+  local rotationRate = util.lerp(transformRatio, self.orbRotationRate, self.orbRotationRateShielded) * dt
+
+  animator.resetTransformationGroup("orbs")
+  animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
+  
+  for i = 1, self.orbCount do
+    self.orbRotations[i] = (self.orbRotations[i] + rotationRate) % (math.pi * 2)
+
+    local name = "orb"..i
+    animator.resetTransformationGroup(name)
+    animator.rotateTransformationGroup(name, self.orbRotations[i] - self.orbitRotation)
+    animator.translateTransformationGroup(name, {orbitDistance, 0})
+    animator.rotateTransformationGroup(name, math.pi * 2 * (i / self.orbCount) + self.orbitRotation)
+
+    animator.setAnimationState(name, storage.projectileIds[i] == false and "orb" or "hidden")
+    animator.setParticleEmitterActive(name, storage.projectileIds[i] == false)
   end
 
   updateAim()
 
   activeItem.setScriptedAnimationParameter("projectileIds", storage.projectileIds)
+
+  self.lastFireMode = fireMode
 end
 
 function uninit()
@@ -140,7 +135,7 @@ function uninit()
 end
 
 function nextOrb()
-  local i = self.lastOrb
+  local i = storage.lastOrb
   for _ = 1, self.orbCount do
     i = i + 1
     if i > self.orbCount then i = 1 end
@@ -243,15 +238,6 @@ function deactivateShield()
   activeItem.setItemShieldPolys()
   activeItem.setItemDamageSources()
   status.clearPersistentEffects("magnorbShield")
-end
-
-function setOrbPosition(spaceFactor, distance)
-  local h = self.orbCount / 2 + 0.5
-  for i = 1, self.orbCount do
-    animator.resetTransformationGroup("orb"..i)
-    animator.translateTransformationGroup("orb"..i, {distance or 0, 0})
-    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - h) / self.orbCount))
-  end
 end
 
 function setOrbAnimationState(newState)
