@@ -31,7 +31,7 @@ function init()
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
   
-  checkProjectiles()
+  checkProjectiles(true)
 
   self.shieldActive = false
   self.shieldTransformTimer = 0
@@ -193,11 +193,13 @@ function aimVector(firePos)
   return vec2.norm(world.distance(activeItem.ownerAimPosition(), firePos))
 end
 
-function checkProjectiles()
+function checkProjectiles(noSound)
   for i, projectileId in ipairs(storage.projectileIds) do
     if projectileId then
       if not world.entityExists(projectileId) then
-        animator.playSound("return")
+        if not noSound then
+          animator.playSound("return")
+        end
         storage.projectileIds[i] = false
       else
         world.sendEntityMessage(projectileId, "setTargetPosition", firePosition(i))
