@@ -1,5 +1,4 @@
 require "/scripts/vec2.lua"
-require "/scripts/util.lua"
 require "/scripts/status.lua"
 require "/scripts/activeitem/stances.lua"
 
@@ -97,11 +96,11 @@ function update(dt, fireMode, shiftHeld)
   local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
   animator.setSoundVolume("shieldLoop", transformRatio)
 
-  local orbitRate = util.lerp(transformRatio, self.orbitRate, self.orbitRateShielded) * dt
+  local orbitRate = lerp(transformRatio, self.orbitRate, self.orbitRateShielded) * dt
   self.orbitRotation = (self.orbitRotation + orbitRate) % (math.pi * 2)
 
-  local orbitDistance = util.lerp(transformRatio, self.orbitDistance, self.orbitDistanceShielded)
-  local rotationRate = util.lerp(transformRatio, self.orbRotationRate, self.orbRotationRateShielded) * dt
+  local orbitDistance = lerp(transformRatio, self.orbitDistance, self.orbitDistanceShielded)
+  local rotationRate = lerp(transformRatio, self.orbRotationRate, self.orbRotationRateShielded) * dt
 
   animator.resetTransformationGroup("orbs")
   animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
@@ -246,4 +245,18 @@ function setOrbAnimationState(newState)
   for i = 1, self.orbCount do
     animator.setAnimationState("orb"..i, newState)
   end
+end
+
+function lerp(ratio, a, b)
+  if type(a) == "table" then
+    a, b = a[1], a[2]
+  end
+
+  if ratio <= 0 then
+    return a
+  elseif ratio >= 1 then
+    return b
+  end
+
+  return a + (b - a) * ratio
 end
