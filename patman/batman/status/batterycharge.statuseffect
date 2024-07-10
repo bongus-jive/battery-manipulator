@@ -33,29 +33,7 @@
             {
               "action": "particle",
               "rotate": true,
-              "specification": {
-                "type": "streak",
-                "layer": "middle",
-                "size": 1.0,
-                "length": 8,
-                "fullbright": true,
-                "collidesForeground": false,
-                "color": [ 150, 198, 255, 255 ],
-                "light": [ 0, 30, 60 ],
-                "fade": 0.9,
-                "destructionAction": "shrink",
-                "destructionTime": 0.4,
-                "initialVelocity": [ -50, 0 ],
-                "finalVelocity": [ 0, -100 ],
-                "approach": [ 0, 30 ],
-                "timeToLive": 0.0,
-                "variance": {
-                  "size": 0.5,
-                  "length": 6,
-                  "initialVelocity": [ 25, 25 ],
-                  "timeToLive": 0.3
-                }
-              }
+              "specification": "pat_batman_chargestreak"
             }
           ]
         }
