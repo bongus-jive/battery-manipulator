@@ -106,6 +106,21 @@
         { "particle": "protectorblade2" }
       ]
     },
+    "shield": {
+      "active": false,
+      "transformationGroups": [ "weapon", "orbs" ],
+      "offsetRegion": [ 1.75, 1.75, -1.75, -1.75 ],
+      "emissionRate": 8,
+      "randomSelectCount": 2,
+      "particles": [
+        { "particle": "protectorblade" },
+        { "particle": "protectorblade2" },
+        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_bolt" },
+        { "particle": "pat_batman_bolt" },
+        { "particle": "pat_batman_smallbolt" }
+      ]
+    },
     "orb1": {
       "active": false,
       "anchorPart": "orb1",
@@ -115,7 +130,9 @@
       "particles": [
         { "particle": "electricswoosh1", "count": 0 },
         { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 1 }
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_smallbolt" }
       ]
     },
     "orb2": {
@@ -127,7 +144,9 @@
       "particles": [
         { "particle": "electricswoosh1", "count": 0 },
         { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 1 }
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_smallbolt" }
       ]
     },
     "orb3": {
@@ -139,7 +158,9 @@
       "particles": [
         { "particle": "electricswoosh1", "count": 0 },
         { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 1 }
+        { "particle": "electricswoosh1", "count": 0 },
+        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_smallbolt" }
       ]
     }
   },

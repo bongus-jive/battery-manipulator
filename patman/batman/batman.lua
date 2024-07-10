@@ -209,6 +209,7 @@ end
 
 function activateShield()
   self.shieldActive = true
+  animator.setParticleEmitterActive("shield", true)
   animator.resetTransformationGroup("orbs")
   animator.playSound("shieldOn")
   setStance("shield")
@@ -217,6 +218,16 @@ function activateShield()
   status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = self.shieldHealth}})
 
   self.listener = damageListener("damageTaken", damageTaken)
+end
+
+function deactivateShield()
+  self.shieldActive = false
+  animator.setParticleEmitterActive("shield", false)
+  animator.playSound("shieldOff")
+  setStance("idle")
+  activeItem.setItemShieldPolys()
+  activeItem.setItemDamageSources()
+  status.clearPersistentEffects("magnorbShield")
 end
 
 function damageTaken(notifications)
@@ -230,15 +241,6 @@ function damageTaken(notifications)
       return
     end
   end
-end
-
-function deactivateShield()
-  self.shieldActive = false
-  animator.playSound("shieldOff")
-  setStance("idle")
-  activeItem.setItemShieldPolys()
-  activeItem.setItemDamageSources()
-  status.clearPersistentEffects("magnorbShield")
 end
 
 function setOrbAnimationState(newState)

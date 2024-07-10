@@ -1,0 +1,18 @@
+{
+  "kind": "pat_batman_smallbolt",
+  "definition": {
+    "type": "animated",
+    "looping": false,
+    "animation": "/patman/batman/particles/smallbolt.animation",
+    "fullbright": true,
+    "fade": 1,
+    "light": [ 25, 92, 107 ],
+    "size": 0.5,
+    "layer": "middle",
+    "timeToLive": 0.2,
+    "variance": {
+      "size": 0.15,
+      "rotation": 180
+    }
+  }
+}
