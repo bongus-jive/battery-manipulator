@@ -88,9 +88,8 @@ function update(dt, fireMode, shiftHeld)
       elseif self.lastFireMode ~= "alt" then
         sendMessageToOrbs("return", self.orbReturnControlForce, self.orbReturnPickupDistance)
       end
-    else
-      self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
     end
+    self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
   end
 
   local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
