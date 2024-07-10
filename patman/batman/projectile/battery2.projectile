@@ -13,6 +13,7 @@
   "bounces": -1,
   "piercing": true,
   "timeToLive": 10,
+  "emitters": [ "pat_batman" ],
 
   "actionOnCollide": [
     {
