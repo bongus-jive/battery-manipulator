@@ -1,21 +1,21 @@
 {
-  "kind" : "pat_batman",
-  "location" : "normal",
-  "definition" : {
-    "duration" : 0.1,
-    "durationVariance" : 0.06,
-    "loops" : true,
-    "start" : {
-      "particles" : [],
-      "sounds" : []
+  "kind": "pat_batman",
+  "location": "normal",
+  "definition": {
+    "duration": 0.1,
+    "durationVariance": 0.06,
+    "loops": true,
+    "start": {
+      "particles": [ ],
+      "sounds": [ ]
     },
-    "particles" : [
-      [ "electricswoosh1" ], [ "pat_batman_smallbolt" ], [], []
+    "particles": [
+      [ "electricswoosh1" ], [ "pat_batman_smallbolt" ], [ ], [ ]
     ],
-    "sounds" : [],
-    "stop" : {
-      "particles" : [],
-      "sounds" : []
+    "sounds": [ ],
+    "stop": {
+      "particles": [ ],
+      "sounds": [ ]
     }
   }
 }
