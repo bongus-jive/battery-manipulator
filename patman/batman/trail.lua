@@ -54,6 +54,8 @@ function trail(entityPos, points)
   table.insert(points, 1, newPoint)
   points[self.trailConfig.segments + 1] = nil
 
+  local lastPoint
+  
   for i, point in ipairs(points) do
     local isFinalPoint = i == #points
     local segmentMult = 1 - (i / #points)
@@ -69,8 +71,7 @@ function trail(entityPos, points)
       point.widthPosB = vec2.add(relativePos, vec2.mul(point.widthVec, -width))
     end
 
-    if i > 1 then
-      lastPoint = points[i - 1]
+    if lastPoint then
       local poly = {lastPoint.widthPosA, lastPoint.widthPosB}
 
       if isFinalPoint then
@@ -85,5 +86,7 @@ function trail(entityPos, points)
 
       localAnimator.addDrawable({position = entityPos, poly = poly, color = self.trailConfig.color}, self.trailConfig.layer)
     end
+
+    lastPoint = point
   end
 end
