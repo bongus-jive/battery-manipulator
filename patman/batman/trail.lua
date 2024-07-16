@@ -85,6 +85,13 @@ function trail(entityPos, points)
       end
 
       localAnimator.addDrawable({position = entityPos, poly = poly, color = self.trailConfig.color}, self.trailConfig.layer)
+      if self.trailConfig.outineWidth then
+        local drawable = {position = entityPos, color = self.trailConfig.color, width = self.trailConfig.outineWidth}
+        drawable.line = {poly[1], poly[4] or poly[3]}
+        localAnimator.addDrawable(drawable, self.trailConfig.layer)
+        drawable.line = {poly[2], poly[3]}
+        localAnimator.addDrawable(drawable, self.trailConfig.layer)
+      end
     end
 
     lastPoint = point
