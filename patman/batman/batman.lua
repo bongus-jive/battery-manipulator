@@ -36,7 +36,7 @@ function init()
   self.shieldTransformTimer = 0
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
 
-  if self.shieldKnockback > 0 then
+  if self.shieldKnockback then
     self.knockbackDamageSource = {
       poly = self.shieldPoly,
       damage = 0,
@@ -45,7 +45,7 @@ function init()
       team = activeItem.ownerTeam(),
       knockback = self.shieldKnockback,
       rayCheck = true,
-      damageRepeatTimeout = 0.5
+      damageRepeatTimeout = self.shieldKnockbackTimeout or 0.5
     }
   end
 

@@ -54,6 +54,7 @@
   
     "shieldTransformTime": 0.18,
     "shieldKnockback": 18,
+    "shieldKnockbackTimeout": 0.4,
     "shieldEnergyCost": 60,
     "shieldHealth": 800
   },
