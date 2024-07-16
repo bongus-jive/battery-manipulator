@@ -62,16 +62,18 @@ function update(dt, fireMode, shiftHeld)
   updateStance(dt)
   checkProjectiles()
   
-  local nextOrbIndex = nextOrb()
+  local nextOrbIndex = getNextOrb()
 
   if fireMode == "primary" and self.lastFireMode ~= "primary" and nextOrbIndex then
     fire(nextOrbIndex)
     storage.lastOrb = nextOrbIndex
   end
 
+  local availableOrbs = getAvailableOrbCount()
+
   if self.shieldActive then
     if fireMode == "alt"
-    and availableOrbCount() == self.orbCount
+    and availableOrbs == self.orbCount
     and status.resourcePositive("shieldStamina")
     and status.overConsumeResource("energy", self.shieldEnergyCost * dt) then
       self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
@@ -81,7 +83,7 @@ function update(dt, fireMode, shiftHeld)
     end
   else
     if fireMode == "alt" then
-      if availableOrbCount() == self.orbCount
+      if availableOrbs == self.orbCount
       and status.resourcePositive("shieldStamina")
       and not status.resourceLocked("energy") then
         activateShield()
@@ -113,8 +115,9 @@ function update(dt, fireMode, shiftHeld)
     animator.translateTransformationGroup(name, {orbitDistance, 0})
     animator.rotateTransformationGroup(name, math.pi * 2 * (i / self.orbCount) + self.orbitRotation)
 
-    animator.setAnimationState(name, storage.projectileIds[i] == false and "orb" or "hidden")
-    animator.setParticleEmitterActive(name, storage.projectileIds[i] == false)
+    local orbiting = storage.projectileIds[i] == false
+    animator.setAnimationState(name, orbiting and "orb" or "hidden")
+    animator.setParticleEmitterActive(name, orbiting)
   end
 
   updateAim()
@@ -132,7 +135,7 @@ function uninit()
   sendMessageToOrbs("setTargetPosition", nil)
 end
 
-function nextOrb()
+function getNextOrb()
   local i = storage.lastOrb
   for _ = 1, self.orbCount do
     i = i + 1
@@ -141,7 +144,7 @@ function nextOrb()
   end
 end
 
-function availableOrbCount()
+function getAvailableOrbCount()
   local available = 0
   for i = 1, self.orbCount do
     if not storage.projectileIds[i] then
