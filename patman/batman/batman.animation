@@ -167,6 +167,21 @@
       "position": [ 0, 0 ],
       "color": [ 0, 40, 90 ],
       "transformationGroups": [ "weapon" ]
+    },
+    "orb1": {
+      "position": [ 0, 0 ],
+      "color": [ 0, 35, 60 ],
+      "anchorPart": "orb1"
+    },
+    "orb2": {
+      "position": [ 0, 0 ],
+      "color": [ 0, 35, 60 ],
+      "anchorPart": "orb2"
+    },
+    "orb3": {
+      "position": [ 0, 0 ],
+      "color": [ 0, 35, 60 ],
+      "anchorPart": "orb3"
     }
   },
 

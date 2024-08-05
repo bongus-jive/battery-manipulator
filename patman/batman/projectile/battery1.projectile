@@ -14,6 +14,7 @@
   "piercing": true,
   "timeToLive": 10,
   "emitters": [ "pat_batman" ],
+  "lightColor": [ 0, 35, 60 ],
 
   "actionOnCollide": [
     {

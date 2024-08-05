@@ -115,6 +115,7 @@ function update(dt, fireMode, shiftHeld)
     local orbiting = storage.projectileIds[i] == false
     animator.setAnimationState(name, orbiting and "orb" or "hidden")
     animator.setParticleEmitterActive(name, orbiting)
+    animator.setLightActive(name, orbiting)
   end
 
   updateAim()
