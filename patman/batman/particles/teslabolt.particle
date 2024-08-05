@@ -1,0 +1,17 @@
+{
+  "kind": "pat_batman_teslabolt",
+  "definition": {
+    "type": "animated",
+    "animation": "/animations/teslabolt/teslabolt.animation",
+    "fullbright": true,
+    "fade": 2,
+    "light": [ 16, 60, 68 ],
+    "size": 0.5,
+    "layer": "middle",
+    "timeToLive": 0.3,
+    "variance": {
+      "size": 0.1,
+      "rotation": 180
+    }
+  }
+}

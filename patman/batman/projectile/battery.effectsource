@@ -10,7 +10,7 @@
       "sounds": [ ]
     },
     "particles": [
-      [ "electricswoosh1" ], [ "pat_batman_smallbolt" ], [ ], [ ]
+      [ "pat_batman_teslabolt" ], [ "pat_batman_smallbolt" ], [ ], [ ]
     ],
     "sounds": [ ],
     "stop": {

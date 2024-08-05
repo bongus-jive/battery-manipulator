@@ -102,8 +102,6 @@
       "offsetRegion": [ 0.2, 0.2, -0.2, -0.2 ],
       "emissionRate": 2,
       "particles": [
-        { "particle": "protectorblade" },
-        { "particle": "protectorblade2" }
       ]
     },
     "shield": {
@@ -113,9 +111,7 @@
       "emissionRate": 8,
       "randomSelectCount": 2,
       "particles": [
-        { "particle": "protectorblade" },
-        { "particle": "protectorblade2" },
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_bolt" },
         { "particle": "pat_batman_bolt" },
         { "particle": "pat_batman_smallbolt" }
@@ -128,10 +124,10 @@
       "emissionRate": 3,
       "randomSelectCount": 1,
       "particles": [
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_smallbolt" }
       ]
     },
@@ -142,10 +138,10 @@
       "emissionRate": 3,
       "randomSelectCount": 1,
       "particles": [
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_smallbolt" }
       ]
     },
@@ -156,10 +152,10 @@
       "emissionRate": 3,
       "randomSelectCount": 1,
       "particles": [
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1", "count": 0 },
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt", "count": 0 },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_smallbolt" }
       ]
     }

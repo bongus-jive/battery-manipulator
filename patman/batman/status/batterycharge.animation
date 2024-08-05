@@ -4,8 +4,8 @@
       "emissionRate": 3,
       "randomSelectCount": 1,
       "particles": [
-        { "particle": "electricswoosh1" },
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt" },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_smallbolt" }
       ]
     },
@@ -13,7 +13,7 @@
       "emissionRate": 5,
       "randomSelectCount": 1,
       "particles": [
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_smallbolt" }
       ]
     },
@@ -21,8 +21,8 @@
       "emissionRate": 7,
       "randomSelectCount": 1,
       "particles": [
-        { "particle": "electricswoosh1" },
-        { "particle": "electricswoosh1" },
+        { "particle": "pat_batman_teslabolt" },
+        { "particle": "pat_batman_teslabolt" },
         { "particle": "pat_batman_smallbolt" },
         { "particle": "pat_batman_smallbolt" },
         { "particle": "pat_batman_bolt" }
