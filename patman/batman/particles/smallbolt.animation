@@ -1,5 +1,5 @@
 {
-  "frames": "smallbolt.png",
+  "frames": "/patman/batman/images/smallbolt.png",
   "variants": 1,
   "frameNumber": 6,
   "animationCycle": 0.2,
