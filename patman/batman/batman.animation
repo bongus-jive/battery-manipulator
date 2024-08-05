@@ -162,7 +162,8 @@
   },
 
   "lights": {
-    "glow": {
+    "shield": {
+      "active": false,
       "position": [ 0, 0 ],
       "color": [ 0, 40, 90 ],
       "transformationGroups": [ "weapon" ]
