@@ -12,7 +12,7 @@
 
   "effectConfig": {
     "boundBoxEmitters": [ "sparks", "sparks2", "sparks3" ],
-    "directives": "?fade=3377AA=0.25",
+    "directives": "?fade=43AFF3=0.25",
 
     "receiveMessage": "pat_batterymanipulator_trigger",
     "messagesRequired": 2,
