@@ -9,7 +9,7 @@
     "collidesForeground": false,
     "color": "#64FAFF",
     "light": [ 0, 30, 60 ],
-    "fade": 0.9,
+    "fade": 0.5,
     "destructionAction": "shrink",
     "destructionTime": 0.4,
     "initialVelocity": [ -50, 0 ],
