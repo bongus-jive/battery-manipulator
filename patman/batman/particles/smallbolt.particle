@@ -2,7 +2,6 @@
   "kind": "pat_batman_smallbolt",
   "definition": {
     "type": "animated",
-    "looping": false,
     "animation": "/patman/batman/particles/smallbolt.animation",
     "fullbright": true,
     "fade": 3,

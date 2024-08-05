@@ -2,7 +2,6 @@
   "kind": "pat_batman_bolt",
   "definition": {
     "type": "animated",
-    "looping": false,
     "animation": "/patman/batman/particles/bolt.animation",
     "fullbright": true,
     "fade": 3,
