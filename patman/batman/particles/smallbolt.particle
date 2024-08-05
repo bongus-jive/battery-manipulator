@@ -4,11 +4,11 @@
     "type": "animated",
     "animation": "/patman/batman/particles/smallbolt.animation",
     "fullbright": true,
-    "fade": 3,
-    "light": [ 25, 92, 107 ],
+    "fade": 2,
+    "light": [ 16, 60, 68 ],
     "size": 0.5,
     "layer": "middle",
-    "timeToLive": 0.2,
+    "timeToLive": 0.3,
     "variance": {
       "size": 0.15,
       "rotation": 180
