@@ -1,0 +1,24 @@
+{
+  "projectileName": "pat_batterymanipulator_chargeexplosion",
+  "image": "/patman/batman/images/chargeexplosion.png",
+  "frameNumber": 6,
+  "animationCycle": 0.2,
+  "animationLoops": false,
+  "flippable": true,
+  "fullbright": true,
+  "renderLayer": "Monster+100",
+  "speed": 0,
+  "bounces": -1,
+  "damagePoly": [ [ -37, 0 ], [ -28, -28 ], [ 0, -37 ], [ 28, -28 ], [ 37, 0 ], [ 28, 28 ], [ 0, 37 ], [ -28, 28 ] ],
+  "damageKind": "electricplasma",
+  "piercing": true,
+  "knockback": 30,
+  "periodicActions": [
+    {
+      "time": 0,
+      "repeat": false,
+      "action": "config",
+      "file": "/patman/batman/projectile/chargeexplosion.config"
+    }
+  ]
+}

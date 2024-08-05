@@ -17,27 +17,9 @@
     "receiveMessage": "pat_batterymanipulator_trigger",
     "messagesRequired": 2,
 
-    "projectileType": "electricplasmaexplosion",
+    "projectileType": "pat_batterymanipulator_chargeexplosion",
     "projectileParameters": {
-      "power": 1.5,
-      "speed": 0,
-      "timeToLive": 0.08,
-      "onlyHitTerrain": true,
-      "periodicActions": [
-        {
-          "time": 0,
-          "repeat": false,
-          "action": "loop",
-          "count": 24,
-          "body": [
-            {
-              "action": "particle",
-              "rotate": true,
-              "specification": "pat_batman_chargestreak"
-            }
-          ]
-        }
-      ]
+      "power": 1.5
     }
   }
 }
