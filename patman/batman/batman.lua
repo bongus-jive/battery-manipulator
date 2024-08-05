@@ -35,18 +35,15 @@ function init()
   self.shieldActive = false
   self.shieldTransformTimer = 0
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
-
-  if self.shieldKnockback then
-    self.knockbackDamageSource = {
-      poly = self.shieldPoly,
-      damage = 0,
-      damageType = "Knockback",
-      sourceEntity = activeItem.ownerEntityId(),
-      team = activeItem.ownerTeam(),
-      knockback = self.shieldKnockback,
-      rayCheck = true,
-      damageRepeatTimeout = self.shieldKnockbackTimeout or 0.5
-    }
+  
+  self.shieldPolys = {self.shieldPoly}
+  self.shieldDamageSources = {}
+  
+  if self.shieldDamageConfig then
+    self.shieldDamageConfig.poly = self.shieldPoly
+    self.shieldDamageConfig.sourceEntity = activeItem.ownerEntityId()
+    self.shieldDamageConfig.team = activeItem.ownerTeam()
+    table.insert(self.shieldDamageSources, self.shieldDamageConfig)
   end
 
   initStances()
@@ -215,8 +212,8 @@ function activateShield()
   animator.resetTransformationGroup("orbs")
   animator.playSound("shieldOn")
   setStance("shield")
-  activeItem.setItemShieldPolys({self.shieldPoly})
-  activeItem.setItemDamageSources({self.knockbackDamageSource})
+  activeItem.setItemShieldPolys(self.shieldPolys)
+  activeItem.setItemDamageSources(self.shieldDamageSources)
   status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = self.shieldHealth}})
 
   self.listener = damageListener("damageTaken", damageTaken)

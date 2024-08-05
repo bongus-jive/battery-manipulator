@@ -38,27 +38,33 @@
       { "type": "pat_batterymanipulator2" }
     ],
     "projectileParameters": { },
-  
+
     "orbitRate": 0.6,
     "orbitRateShielded": 1.8,
-  
+
     "orbitDistance": 1.5,
     "orbitDistanceShielded": 2.75,
-  
+
     "orbRotationRate": 0.67,
     "orbRotationRateShielded": 1.2,
-  
+
     "orbCount": 3,
     "orbReturnControlForce": 1200,
     "orbReturnPickupDistance": 1.6,
-  
+
     "shieldTransformTime": 0.18,
-    "shieldKnockback": 18,
-    "shieldKnockbackTimeout": 0.4,
     "shieldEnergyCost": 60,
-    "shieldHealth": 800
+    "shieldHealth": 800,
+    "shieldDamageConfig": {
+      "damage": 0,
+      "damageType": "Knockback",
+      "damageRepeatTimeout": 0.4,
+      "knockback": 18,
+      "statusEffects": [ "pat_batterymanipulator_charge" ],
+      "rayCheck": true
+    }
   },
-  
+
   "stances": {
     "idle": {
       "armRotation": 10,
