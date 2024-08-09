@@ -1,3 +1,5 @@
+require "/scripts/messageutil.lua"
+
 function init()
   effect.setParentDirectives(effect.getParameter("directives", ""))
 
@@ -14,13 +16,13 @@ function init()
   if msg then
     requiredMessages = effect.getParameter("messagesRequired", 1)
     recievedMessages = 0
-    message.setHandler(msg, trigger)
+    message.setHandler(msg, simpleHandler(trigger))
   end
 
   animator.playSound("zap")
 end
 
-function trigger(_, _, sourceId, params)
+function trigger(sourceId, params)
   recievedMessages = recievedMessages + 1
 
   animator.playSound("zap")
