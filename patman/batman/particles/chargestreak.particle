@@ -2,7 +2,7 @@
   "kind": "pat_batman_chargestreak",
   "definition": {
     "type": "streak",
-    "layer": "middle",
+    "layer": "front",
     "size": 1.0,
     "length": 8,
     "fullbright": true,
