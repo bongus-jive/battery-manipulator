@@ -85,7 +85,7 @@ function update(dt, fireMode, shiftHeld)
       and not status.resourceLocked("energy") then
         activateShield()
       elseif self.lastFireMode ~= "alt" then
-        sendMessageToOrbs("return", self.orbReturnControlForce, self.orbReturnPickupDistance)
+        sendMessageToOrbs("forceReturn", self.orbReturnControlForce, self.orbReturnPickupDistance)
       end
     end
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
