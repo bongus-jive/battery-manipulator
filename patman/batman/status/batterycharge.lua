@@ -9,33 +9,32 @@ function init()
     animator.setParticleEmitterActive(name, true)
   end
 
-  projectileType = effect.getParameter("projectileType")
-  projectileParameters = effect.getParameter("projectileParameters", {})
+  self.projectileType = effect.getParameter("projectileType")
+  self.projectileParameters = effect.getParameter("projectileParameters", {})
 
   local msg = effect.getParameter("receiveMessage")
   if msg then
-    requiredMessages = effect.getParameter("messagesRequired", 1)
-    recievedMessages = 0
+    self.requiredMessages = effect.getParameter("messagesRequired", 1)
+    self.recievedMessages = 0
     message.setHandler(msg, simpleHandler(trigger))
   end
 
   animator.playSound("zap")
 end
 
-function trigger(sourceId, params)
-  recievedMessages = recievedMessages + 1
 
+function trigger(sourceId, params)
   animator.playSound("zap")
   
-  if recievedMessages < requiredMessages then
+  if self.recievedMessages < self.requiredMessages then
     return
   end
 
-  if projectileType then
-    params = sb.jsonMerge(projectileParameters, params or {})
+  if self.projectileType then
+    params = sb.jsonMerge(self.projectileParameters, params or {})
     local angle = math.random() * math.pi * 2
     local direction = {math.cos(angle), math.sin(angle)}
-    world.spawnProjectile(projectileType, mcontroller.position(), sourceId, direction, false, params)
+    world.spawnProjectile(self.projectileType, mcontroller.position(), sourceId, direction, false, params)
   end
 
   effect.expire()
