@@ -24,6 +24,7 @@ end
 
 
 function trigger(sourceId, params)
+  self.recievedMessages = self.recievedMessages + 1
   animator.playSound("zap")
   
   if self.recievedMessages < self.requiredMessages then
