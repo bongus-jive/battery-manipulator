@@ -1,0 +1,81 @@
+{
+  "type": "pat_batterymanipulator_conductor",
+
+  "animation": "/patman/batman/monster/conductor.animation",
+  "categories": [ "pat_batterymanipulator_conductor" ],
+  "parts": [ ],
+  "dropPools": [ ],
+
+  "baseParameters": {
+    "initialScriptDelta": 2,
+    "scripts": [ "/patman/batman/monster/conductor.lua" ],
+    "animationScripts": [ "/patman/batman/monster/conductor_anim.lua" ],
+
+    "scriptedAnimationParameters": {
+      "layers": [
+        { "color": [ 67, 175, 243 ], "width": 2.5, "renderLayer": "MiddleParticle-55" },
+        { "color": [ 100, 250, 255 ], "width": 2, "renderLayer": "MiddleParticle-50" },
+        { "color": [ 255, 255, 255 ], "width": 1, "renderLayer": "MiddleParticle-45" }
+        //#43AFF3, #64FAFF, #FFFFFF
+      ],
+      "boltCount": 1,
+      "duration": 0.3,
+      "displacement": 2.2,
+      "splitDistance": 4.5,
+      "lineParticles": [ "pat_batman_chargestreak", "pat_batman_smallbolt", "pat_batman_teslabolt" ]
+    },
+
+    "queryRadius": 50,
+    "queryOptions": {
+      "includedTypes": [ "creature" ],
+      "order": "random"
+    },
+    "stepCount": [ 2, 4 ],
+    "stepDelay": [ 0.02, 0.08 ],
+    "despawnDelay": 0.5,
+    "projectile": {
+      "type": "pat_batterymanipulator_chargeexplosion",
+      "parameters": {
+        "power": 2.5,
+        "knockback": 0,
+        "damageTeam": { "type": "indiscriminate" }
+      }
+    },
+
+
+    "movementSettings": {
+      "collisionEnabled": false,
+      "gravityEnabled": false,
+      "speedLimit": 0,
+      "collisionPoly": [ [ 1, 0 ], [ 0, 1 ], [ -1, 0 ], [ 0, -1 ] ],
+      "physicsEffectCategories": [ ]
+    },
+
+    "statusSettings": {
+      "primaryScriptSources": [ ],
+      "primaryScriptDelta": 0,
+      "appliesEnvironmentStatusEffects": false,
+      "appliesWeatherStatusEffects": false,
+      "minimumLiquidStatusEffectPercentage": 2,
+      "resources": {
+        "health": { "maxValue": 0, "initialValue": 0 }
+      },
+      "stats": {
+        "invulnerable": { "baseValue": 1 },
+        "statusImmunity": { "baseValue": 1 }
+      }
+    },
+
+    "persistent": false,
+    "metaBoundBox": [ -1, -1, 1, 1 ],
+    "scale": 1,
+    "knockoutTime": 0,
+    "knockoutEffect": "",
+    "damageTeamType": "ghostly",
+    "bodyMaterialKind": "robotic",
+    "mouthOffset": [ 0, 0 ],
+    "feetOffset": [ 0, 0 ],
+    "capturable": false,
+    "relocatable": false
+  }
+}

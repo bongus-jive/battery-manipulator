@@ -34,5 +34,6 @@
 
   "scripts": [ "battery.lua" ],
   "controlForce": 170,
-  "rotationSpeed": 45
+  "rotationSpeed": 45,
+  "conductMonster": "pat_batterymanipulator_conductor"
 }

@@ -34,5 +34,6 @@
 
   "scripts": [ "battery.lua" ],
   "rotationSpeed": -25,
-  "messageOnHit": "pat_batterymanipulator_trigger"
+  "messageOnHit": "pat_batterymanipulator_trigger",
+  "conductMonster": "pat_batterymanipulator_conductor"
 }

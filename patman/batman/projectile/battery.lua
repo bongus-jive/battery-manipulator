@@ -23,6 +23,10 @@ function init()
   
 	self.rotationSpeed = getConfig("rotationSpeed")
   self.messageOnHit = getConfig("messageOnHit")
+  
+  self.hasConducted = false
+  self.conductMonster = getConfig("conductMonster")
+  self.conductLiquidPercentage = getConfig("conductLiquidPercentage", 0.5)
 
   if self.ignoreTerrain then
     disableCollision()
@@ -42,6 +46,10 @@ function update(dt)
 
   if self.rotationSpeed then
     updateRotation(dt)
+  end
+
+  if self.returning and canConduct() then
+    triggerConduction()
   end
 end
 
@@ -91,6 +99,15 @@ function updateBoomerang(dt)
   mcontroller.approachVelocity(toTargetVelocity, force)
 end
 
+function canConduct()
+  return (not self.hasConducted) and mcontroller.liquidPercentage() > self.conductLiquidPercentage
+end
+
+function triggerConduction()
+  self.hasConducted = true
+  world.spawnMonster(self.conductMonster, mcontroller.position(), getConductMonsterParams())
+end
+
 function hit(entityId)
   if self.returnOnHit then
     self.returning = true 
@@ -98,6 +115,10 @@ function hit(entityId)
 
   if self.messageOnHit then
     world.sendEntityMessage(entityId, self.messageOnHit, self.ownerId, getMessageOnHitParams())
+  end
+
+  if canConduct() then
+    triggerConduction()
   end
 end
 
@@ -121,6 +142,13 @@ end
 function getMessageOnHitParams()
   return {
     powerMultiplier = projectile.powerMultiplier()
+  }
+end
+
+function getConductMonsterParams()
+  return {
+    powerMultiplier = projectile.powerMultiplier(),
+    ownerId = self.ownerId
   }
 end
 
