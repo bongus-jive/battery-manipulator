@@ -5,22 +5,24 @@ function init()
   local getConfig = config.getParameter
 
   self.ownerId = projectile.sourceEntity()
+  
   self.speed = getConfig("speed")
   self.timeToLive = getConfig("timeToLive")
+
   self.returning = getConfig("returning", false)
   self.returnOnHit = getConfig("returnOnHit", false)
   self.ignoreTerrain = getConfig("ignoreTerrain", false)
-  self.messageOnHit = getConfig("messageOnHit")
   self.controlForce = getConfig("controlForce", 150)
   self.snapControlForce = getConfig("snapControlForce", 500)
   self.pickupDistance = getConfig("pickupDistance", 1)
   self.snapDistance = getConfig("snapDistance", 9)
   self.minVelocity = getConfig("minVelocity", 0.2)
-	self.rotationSpeed = getConfig("rotationSpeed")
-
   self.bounceReturnTimer = 0
   self.bounceReturnIncrease = getConfig("bounceReturnIncrease", 0.25)
   self.bounceReturnThreshold = getConfig("bounceReturnThreshold", 1)
+  
+	self.rotationSpeed = getConfig("rotationSpeed")
+  self.messageOnHit = getConfig("messageOnHit")
 
   if self.ignoreTerrain then
     disableCollision()
