@@ -33,13 +33,11 @@
     "stepCount": [ 2, 4 ],
     "stepDelay": [ 0.02, 0.08 ],
     "despawnDelay": 0.5,
-    "projectile": {
-      "type": "pat_batterymanipulator_chargeexplosion",
-      "parameters": {
-        "power": 2.5,
-        "knockback": 0,
-        "damageTeam": { "type": "indiscriminate" }
-      }
+    "projectileType": "pat_batterymanipulator_chargeexplosion",
+    "projectileParameters": {
+      "power": 2.5,
+      "knockback": 0,
+      "damageTeam": { "type": "indiscriminate" }
     },
 
 

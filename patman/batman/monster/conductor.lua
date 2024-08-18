@@ -22,9 +22,9 @@ function init()
   self.excludeOwner = config.getParameter("excludeOwner", false)
   self.checkOwnerCanDamage = config.getParameter("checkOwnerCanDamage", false)
 
-  self.projectile = config.getParameter("projectile")
-  if self.projectile then
-    self.projectile.parameters = initProjectileParams(self.projectile.parameters)
+  self.projectileType = config.getParameter("projectileType")
+  if self.projectileType then
+    self.projectileParams = initProjectileParams(config.getParameter("projectileParameters", {}))
     spawnProjectile(self.position)
   end
 
@@ -98,7 +98,7 @@ function conductTarget(target, conductedPositions)
   end
 
   world.debugLine(startPosition, targetPosition, "#F0F")
-  if self.projectile then
+  if self.projectileType then
     spawnProjectile(targetPosition)
   end
 
@@ -197,17 +197,13 @@ end
 
 function initProjectileParams(params)
   params = params or {}
-  params.power = params.power or config.getParameter("power")
   params.powerMultiplier = config.getParameter("powerMultiplier")
   params.damageRepeatGroup = string.format("%s:%s:%s:%s", monster.type(), self.id, self.ownerId, world.time())
   return params
 end
 
-function spawnProjectile(position, params)
-  if params then
-    params = sb.jsonMerge(self.projectile.parameters, params or {})
-  end
-  world.spawnProjectile(self.projectile.type, position, self.id, randomVector(), nil, params or self.projectile.parameters)
+function spawnProjectile(position)
+  world.spawnProjectile(self.projectileType, position, self.ownerId, randomVector(), nil, self.projectileParams)
 end
 
 function randomVector()
