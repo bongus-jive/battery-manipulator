@@ -9,12 +9,17 @@
   "knockback": 9,
   "damageKind": "electrichammer",
   "damageRepeatTimeout": 0.2,
-  "physics": "laser",
   "bounces": -1,
   "piercing": true,
   "timeToLive": 15,
   "emitters": [ "pat_batman" ],
   "lightColor": [ 0, 35, 60 ],
+  "statusEffects": [ ],
+
+  "physics": "laser",
+  "movementSettings": {
+    "liquidFriction": 1.25
+  },
 
   "actionOnCollide": [
     {
