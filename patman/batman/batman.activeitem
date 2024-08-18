@@ -33,9 +33,9 @@
   "scripts": [ "batman.lua" ],
   "batmanConfig": {
     "projectiles": [
-      { "type": "pat_batterymanipulator1" },
-      { "type": "pat_batterymanipulator1", "parameters": { "processing": "?flipy" } },
-      { "type": "pat_batterymanipulator2" }
+      { "type": "pat_batman1" },
+      { "type": "pat_batman1", "parameters": { "processing": "?flipy" } },
+      { "type": "pat_batman2" }
     ],
     "projectileParameters": { },
 
@@ -60,7 +60,7 @@
       "damageType": "Knockback",
       "damageRepeatTimeout": 0.4,
       "knockback": 18,
-      "statusEffects": [ "pat_batterymanipulator_charge" ],
+      "statusEffects": [ "pat_batman_charge" ],
       "rayCheck": true
     }
   },

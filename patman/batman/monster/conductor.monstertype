@@ -1,8 +1,8 @@
 {
-  "type": "pat_batterymanipulator_conductor",
+  "type": "pat_batman_conductor",
 
   "animation": "/patman/batman/monster/conductor.animation",
-  "categories": [ "pat_batterymanipulator_conductor" ],
+  "categories": [ "pat_batman_conductor" ],
   "parts": [ ],
   "dropPools": [ ],
 
@@ -33,7 +33,7 @@
     "stepCount": [ 2, 4 ],
     "stepDelay": [ 0.02, 0.08 ],
     "despawnDelay": 0.5,
-    "projectileType": "pat_batterymanipulator_chargeexplosion",
+    "projectileType": "pat_batman_chargeexplosion",
     "projectileParameters": {
       "power": 2.5,
       "knockback": 0,

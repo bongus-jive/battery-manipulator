@@ -1,5 +1,5 @@
 {
-  "projectileName": "pat_batterymanipulator2",
+  "projectileName": "pat_batman2",
   "image": "/patman/batman/images/battery2.png",
   "flippable": false,
   "orientationLocked": true,
@@ -34,6 +34,6 @@
 
   "scripts": [ "battery.lua" ],
   "rotationSpeed": -25,
-  "messageOnHit": "pat_batterymanipulator_trigger",
-  "conductMonster": "pat_batterymanipulator_conductor"
+  "messageOnHit": "pat_batman_trigger",
+  "conductMonster": "pat_batman_conductor"
 }

@@ -1,5 +1,5 @@
 {
-  "projectileName": "pat_batterymanipulator_chargeexplosion",
+  "projectileName": "pat_batman_chargeexplosion",
   "image": "/patman/batman/images/chargeexplosion.png",
   "frameNumber": 6,
   "animationCycle": 0.2,

@@ -1,5 +1,5 @@
 {
-  "name": "pat_batterymanipulator_charge",
+  "name": "pat_batman_charge",
   "blockingStat": "electricStatusImmunity",
   "defaultDuration": 1,
 
@@ -14,10 +14,10 @@
     "boundBoxEmitters": [ "sparks", "sparks2", "sparks3" ],
     "directives": "?fade=43AFF3=0.25",
 
-    "receiveMessage": "pat_batterymanipulator_trigger",
+    "receiveMessage": "pat_batman_trigger",
     "messagesRequired": 2,
 
-    "projectileType": "pat_batterymanipulator_chargeexplosion",
+    "projectileType": "pat_batman_chargeexplosion",
     "projectileParameters": {
       "power": 1.5
     }
