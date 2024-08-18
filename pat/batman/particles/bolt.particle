@@ -1,8 +1,8 @@
 {
-  "kind": "pat_batman_smallbolt",
+  "kind": "pat_batman_bolt",
   "definition": {
     "type": "animated",
-    "animation": "/patman/batman/particles/smallbolt.animation",
+    "animation": "/pat/batman/particles/bolt.animation",
     "fullbright": true,
     "fade": 2,
     "light": [ 16, 60, 68 ],

@@ -1,6 +1,6 @@
 {
   "projectileName": "pat_batman_chargeexplosion",
-  "image": "/patman/batman/images/chargeexplosion.png",
+  "image": "/pat/batman/images/chargeexplosion.png",
   "frameNumber": 6,
   "animationCycle": 0.2,
   "animationLoops": false,
@@ -18,7 +18,7 @@
       "time": 0,
       "repeat": false,
       "action": "config",
-      "file": "/patman/batman/projectile/chargeexplosion.config"
+      "file": "/pat/batman/projectile/chargeexplosion.config"
     }
   ]
 }

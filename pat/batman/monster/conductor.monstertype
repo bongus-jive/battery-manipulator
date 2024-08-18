@@ -1,15 +1,15 @@
 {
   "type": "pat_batman_conductor",
 
-  "animation": "/patman/batman/monster/conductor.animation",
+  "animation": "/pat/batman/monster/conductor.animation",
   "categories": [ "pat_batman_conductor" ],
   "parts": [ ],
   "dropPools": [ ],
 
   "baseParameters": {
     "initialScriptDelta": 2,
-    "scripts": [ "/patman/batman/monster/conductor.lua" ],
-    "animationScripts": [ "/patman/batman/monster/conductor_anim.lua" ],
+    "scripts": [ "/pat/batman/monster/conductor.lua" ],
+    "animationScripts": [ "/pat/batman/monster/conductor_anim.lua" ],
 
     "scriptedAnimationParameters": {
       "layers": [

@@ -1,5 +1,5 @@
 require "/scripts/vec2.lua"
-require "/patman/batman/monster/lightning.lua"
+require "/pat/batman/monster/lightning.lua"
 
 local function getParameter(key, default)
   local value = animationConfig.animationParameter(key)
