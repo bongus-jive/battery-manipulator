@@ -27,7 +27,7 @@
 
     "queryRadius": 50,
     "queryOptions": {
-      "includedTypes": [ "creature" ],
+      "includedTypes": [ "creature", "vehicle" ],
       "order": "random"
     },
     "stepCount": [ 2, 4 ],
