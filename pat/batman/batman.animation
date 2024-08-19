@@ -38,49 +38,34 @@
       },
       "orb1": {
         "properties": {
-          "centered": true,
-          "offset": [ 0, 0 ],
           "orbPosition": [ 0, 0 ],
           "transformationGroups": [ "weapon", "orb1", "orbs" ]
         },
-
         "partStates": {
           "orb1": {
-            "orb": {
-              "properties": { "image": "<partImage>" }
-            }
+            "orb": { "properties": { "image": "<partImage>" } }
           }
         }
       },
       "orb2": {
         "properties": {
-          "centered": true,
-          "offset": [ 0, 0 ],
           "orbPosition": [ 0, 0 ],
           "transformationGroups": [ "weapon", "orb2", "orbs" ]
         },
-
         "partStates": {
           "orb2": {
-            "orb": {
-              "properties": { "image": "<partImage>" }
-            }
+            "orb": { "properties": { "image": "<partImage>" } }
           }
         }
       },
       "orb3": {
         "properties": {
-          "centered": true,
-          "offset": [ 0, 0 ],
           "orbPosition": [ 0, 0 ],
           "transformationGroups": [ "weapon", "orb3", "orbs" ]
         },
-
         "partStates": {
           "orb3": {
-            "orb": {
-              "properties": { "image": "<partImage>" }
-            }
+            "orb": { "properties": { "image": "<partImage>" } }
           }
         }
       }
