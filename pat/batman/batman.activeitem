@@ -59,13 +59,12 @@
 
     "shieldTransformTime": 0.18,
     "shieldPerfectBlockTime": 0.2,
-    "shieldEnergyCost": 60,
-    "shieldHealth": 800,
+    "shieldEnergyCost": 20,
+    "shieldHealth": 200,
     "shieldDamageConfig": {
       "damage": 0,
       "damageType": "Knockback",
-      "damageRepeatTimeout": 0.4,
-      "knockback": 18,
+      "knockback": 16,
       "statusEffects": [ "pat_batman_charge" ],
       "rayCheck": true
     }
