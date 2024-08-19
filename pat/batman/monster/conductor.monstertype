@@ -7,7 +7,7 @@
   "dropPools": [ ],
 
   "baseParameters": {
-    "initialScriptDelta": 2,
+    "initialScriptDelta": 1,
     "scripts": [ "/pat/batman/monster/conductor.lua" ],
     "animationScripts": [ "/pat/batman/monster/conductor_anim.lua" ],
 
