@@ -52,6 +52,11 @@
     "orbReturnControlForce": 1200,
     "orbReturnPickupDistance": 1.6,
 
+    "orbitBounceApproach": 0.08,
+    "shieldPerfectBounce": 4,
+    "shieldBlockBounce": 1,
+    "shieldBreakBounce": -0.75,
+
     "shieldTransformTime": 0.18,
     "shieldPerfectBlockTime": 0.2,
     "shieldEnergyCost": 60,

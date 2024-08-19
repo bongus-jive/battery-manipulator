@@ -30,6 +30,7 @@ function init()
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
 
+  self.orbitBounceDistance = 0
   checkProjectiles(true)
 
   self.shieldActive = false
@@ -99,6 +100,16 @@ function update(dt, fireMode, shiftHeld)
 
   local orbitDistance = lerp(transformRatio, self.orbitDistance, self.orbitDistanceShielded)
   local rotationRate = lerp(transformRatio, self.orbRotationRate, self.orbRotationRateShielded) * dt
+
+  if self.orbitBounceDistance then
+    if self.orbitBounceDistance == orbitDistance then
+      self.orbitBounceDistance = nil
+    else
+      local bounceDistance = self.orbitBounceDistance
+      self.orbitBounceDistance = approach(bounceDistance, orbitDistance, self.orbitBounceApproach)
+      orbitDistance = bounceDistance
+    end
+  end
 
   animator.resetTransformationGroup("orbs")
   animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
@@ -264,14 +275,17 @@ end
 function shieldPerfect()
   animator.playSound("shieldPerfect")
   refreshPerfectBlock()
+  self.orbitBounceDistance = self.shieldPerfectBounce
 end
 
 function shieldBlock()
   animator.playSound("shieldBlock")
+  self.orbitBounceDistance = self.shieldBlockBounce
 end
 
 function shieldBreak()
   animator.playSound("shieldBreak")
+  self.orbitBounceDistance = self.shieldBreakBounce
 end
 
 function refreshPerfectBlock()
@@ -300,4 +314,11 @@ function lerp(ratio, a, b)
   end
 
   return a + (b - a) * ratio
+end
+
+function approach(number, target, rate)
+  local maxDist = math.abs(target - number)
+  if maxDist <= rate then return target end
+  local fractionalRate = rate / maxDist
+  return number + fractionalRate * (target - number)
 end
