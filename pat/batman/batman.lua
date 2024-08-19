@@ -29,7 +29,7 @@ function init()
     self.orbRotations[i] = 0
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
-  
+
   checkProjectiles(true)
 
   self.shieldActive = false
@@ -220,13 +220,16 @@ function activateShield()
 
   activeItem.setItemShieldPolys(self.shieldPolys)
   activeItem.setItemDamageSources(self.shieldDamageSources)
-
+  
   status.setPersistentEffects("magnorbShield", {{stat = "shieldHealth", amount = self.shieldHealth}})
+
+  refreshPerfectBlock()
 end
 
 function deactivateShield()
-  self.shieldActive = false
+  self.listener:update()
   self.listener = nil
+  self.shieldActive = false
 
   animator.setParticleEmitterActive("shield", false)
   animator.setLightActive("shield", false)
@@ -243,14 +246,40 @@ end
 function damageTaken(notifications)
   for _, notification in pairs(notifications) do
     if notification.hitType == "ShieldHit" then
-      if status.resourcePositive("shieldStamina") then
-        animator.playSound("shieldBlock")
-      else
-        animator.playSound("shieldBreak")
-      end
-      return
+      shieldHit(notification)
     end
   end
+end
+
+function shieldHit(notification)
+  if status.resourcePositive("perfectBlock") then
+    shieldPerfect()
+  elseif status.resourcePositive("shieldStamina") then
+    shieldBlock()
+  else
+    shieldBreak()
+  end
+end
+
+function shieldPerfect()
+  animator.playSound("shieldPerfect")
+  refreshPerfectBlock()
+end
+
+function shieldBlock()
+  animator.playSound("shieldBlock")
+end
+
+function shieldBreak()
+  animator.playSound("shieldBreak")
+end
+
+function refreshPerfectBlock()
+  local perfectBlock = status.resource("perfectBlock")
+  local perfectBlockLimit = status.resource("perfectBlockLimit")
+  local perfectBlockTimeAdded = util.clamp(self.shieldPerfectBlockTime - perfectBlock, 0, perfectBlockLimit)
+  status.overConsumeResource("perfectBlockLimit", perfectBlockTimeAdded)
+  status.modifyResource("perfectBlock", perfectBlockTimeAdded)
 end
 
 function setOrbAnimationState(newState)

@@ -199,6 +199,7 @@
     "shieldOn": [ "/sfx/melee/sword_guard.ogg" ],
     "shieldLoop": [ "/sfx/gun/magnorbs_shield_loop1.ogg" ],
     "shieldOff": [ ],
+    "shieldPerfect": [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
     "shieldBlock": [ "/sfx/melee/shield_block_metal.ogg" ],
     "shieldBreak": [ "/sfx/melee/shield_break_metal.ogg" ]
   }

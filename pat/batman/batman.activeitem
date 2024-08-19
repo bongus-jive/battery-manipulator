@@ -53,6 +53,7 @@
     "orbReturnPickupDistance": 1.6,
 
     "shieldTransformTime": 0.18,
+    "shieldPerfectBlockTime": 0.2,
     "shieldEnergyCost": 60,
     "shieldHealth": 800,
     "shieldDamageConfig": {
