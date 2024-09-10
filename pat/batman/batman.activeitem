@@ -54,11 +54,11 @@
 
     "orbitBounceApproach": 0.08,
     "shieldPerfectBounce": 4,
-    "shieldBlockBounce": 1,
+    "shieldBlockBounce": 2,
     "shieldBreakBounce": -0.75,
 
     "shieldTransformTime": 0.18,
-    "shieldPerfectBlockTime": 0.2,
+    "shieldPerfectBlockTime": 0.15,
     "shieldEnergyCost": 20,
     "shieldHealth": 200,
     "shieldDamageConfig": {
