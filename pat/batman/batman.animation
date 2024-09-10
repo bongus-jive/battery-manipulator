@@ -172,12 +172,12 @@
 
   "sounds": {
     "fire": {
-      "pitchMultiplier": 1.12,
+      "pitchMultiplier": 1.18,
       "volume": 1.25,
       "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
     },
     "return": {
-      "pitchMultiplier": 0.88,
+      "pitchMultiplier": 0.92,
       "volume": 1.0,
       "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
     },
@@ -200,8 +200,8 @@
       "pool": [ "/sfx/melee/shield_block_metal.ogg" ]
     },
     "shieldBreak": {
-      "pitchMultiplier": 0.9,
-      "pool": [ "/sfx/melee/shield_break_metal.ogg" ]
+      "pitchMultiplier": 1.1,
+      "pool": [ "/sfx/melee/kill_robotic2.ogg" ]
     }
   }
 }
