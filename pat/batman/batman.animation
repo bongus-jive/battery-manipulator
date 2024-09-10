@@ -181,11 +181,27 @@
       "volume": 1.0,
       "pool": [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ]
     },
-    "shieldOn": [ "/sfx/melee/sword_guard.ogg" ],
-    "shieldLoop": [ "/sfx/gun/magnorbs_shield_loop1.ogg" ],
-    "shieldOff": [ ],
-    "shieldPerfect": [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
-    "shieldBlock": [ "/sfx/melee/shield_block_metal.ogg" ],
-    "shieldBreak": [ "/sfx/melee/shield_break_metal.ogg" ]
+    "shieldOn": {
+      "pitchMultiplier": 1.1,
+      "volume": 0.85,
+      "pool": [ "/sfx/tools/energypickaxe_start.ogg" ]
+    },
+    "shieldOff": { "pool": [ ] },
+    "shieldLoop": {
+      "volume": 1.33,
+      "pool": [ "/sfx/melee/elemental_aura_electric.ogg" ]
+    },
+    "shieldPerfect": {
+      "pitchMultiplier": 0.9,
+      "pool": [ "/sfx/melee/shield_block_metal_perfect.ogg" ]
+    },
+    "shieldBlock": {
+      "pitchMultiplier": 0.9,
+      "pool": [ "/sfx/melee/shield_block_metal.ogg" ]
+    },
+    "shieldBreak": {
+      "pitchMultiplier": 0.9,
+      "pool": [ "/sfx/melee/shield_break_metal.ogg" ]
+    }
   }
 }

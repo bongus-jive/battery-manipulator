@@ -67,7 +67,8 @@
       "knockback": 16,
       "statusEffects": [ "pat_batman_charge" ],
       "rayCheck": true
-    }
+    },
+    "shieldLoopPitch": [ 0.96, 1.12 ]
   },
 
   "stances": {

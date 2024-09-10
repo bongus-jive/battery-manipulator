@@ -94,6 +94,7 @@ function update(dt, fireMode, shiftHeld)
 
   local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
   animator.setSoundVolume("shieldLoop", transformRatio)
+  animator.setSoundPitch("shieldLoop", util.lerp(status.resourcePercentage("shieldStamina"), self.shieldLoopPitch))
 
   local orbitRate = lerp(transformRatio, self.orbitRate, self.orbitRateShielded) * dt
   self.orbitRotation = (self.orbitRotation + orbitRate) % (math.pi * 2)
