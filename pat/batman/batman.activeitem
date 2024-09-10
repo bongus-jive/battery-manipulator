@@ -24,7 +24,7 @@
   "scriptedAnimationParameters": {
     "trailConfig": {
       "segments": 15,
-      "color": [ 120, 140, 160, 120 ],
+      "color": [ 120, 140, 160, 85 ],
       "width": 0.4,
       "outineWidth": 1.5
     }
