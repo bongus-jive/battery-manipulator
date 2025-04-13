@@ -17,12 +17,14 @@
         { "color": [ 100, 250, 255 ], "width": 2, "renderLayer": "MiddleParticle-50" },
         { "color": [ 255, 255, 255 ], "width": 1, "renderLayer": "MiddleParticle-45" }
         //#43AFF3, #64FAFF, #FFFFFF
-      ],
+      ]
+    },
+
+    "lightningParameters": {
       "boltCount": 1,
       "duration": 0.3,
       "displacement": 2.2,
-      "splitDistance": 4.5,
-      "lineParticles": [ "pat_batman_chargestreak", "pat_batman_smallbolt", "pat_batman_teslabolt" ]
+      "splitDistance": 4.5
     },
 
     "queryRadius": 50,

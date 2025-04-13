@@ -1,3 +1,4 @@
+require "/pat/batman/monster/lightning.lua"
 require "/scripts/util.lua"
 
 function init()
@@ -6,11 +7,11 @@ function init()
     return destroy()
   end
 
+  Lightning:init(config.getParameter("lightningParameters", {}))
+
   for k, v in pairs(config.getParameter("scriptedAnimationParameters", {})) do
     monster.setAnimationParameter(k, v)
   end
-  self.newLines = {}
-  self.lineId = 0
 
   self.position = entity.position()
   self.id = entity.id()
@@ -48,11 +49,9 @@ function update(dt)
     end
   end
 
-  monster.setAnimationParameter("newLines", self.newLines)
-  if #self.newLines > 0 then
-    self.newLines = {}
-  end
-
+  Lightning:update(dt)
+  monster.setAnimationParameter("lightningBolts", Lightning.bolts)
+  
   if not self.conductStep then
     return
   end
@@ -103,7 +102,7 @@ function conductTarget(target, conductedPositions)
   end
 
   local lineEndPosition = world.nearestTo(startPosition, targetPosition)
-  createNewLine(startPosition, lineEndPosition)
+  Lightning:createBolt(startPosition, lineEndPosition)
 
   conductedPositions[target.id] = targetPosition
   return true
@@ -209,17 +208,6 @@ end
 function randomVector()
   local angle = math.random() * math.pi * 2
   return {math.cos(angle), math.sin(angle)}
-end
-
-function createNewLine(a, b)
-  local newLine = {
-    startPoint = a,
-    endPoint = b,
-    id = self.lineId
-  }
-  self.lineId = self.lineId + 1
-  self.newLines[#self.newLines + 1] = newLine
-  return newLine
 end
 
 function shouldDie()
